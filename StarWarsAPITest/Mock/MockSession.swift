@@ -8,27 +8,32 @@
 
 import Foundation
 
-// These can't be used yet becasue they cause our extension to complaint that is doesn't conform to URLSessionProtocol
 typealias DataTaskResponse = (Data?, URLResponse?, Error?)
-typealias dataTaskCompletionHandler = (DataTaskResponse) -> Void
+typealias DataTaskCompletionHandler = (DataTaskResponse) -> Void
 
 protocol URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
+    func dataTask(with url: URL, completionHandler: @escaping DataTaskCompletionHandler) -> URLSessionDataTaskProtocol
 }
 
 extension URLSession: URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        return (dataTask(with: url))
+    func dataTask(with url: URL, completionHandler: @escaping DataTaskCompletionHandler) -> URLSessionDataTaskProtocol {
+        return (dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol
     }
 }
 
 class MockURLSession: URLSessionProtocol {
+    
     var mockSessionCalled = false
     var mockDataTask = MockURLSessionDataTask()
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+    var mockData: Data?
+    var mockError: Error?
+    
+    func dataTask(with url: URL, completionHandler: @escaping DataTaskCompletionHandler) -> URLSessionDataTaskProtocol {
         mockSessionCalled = true
+        completionHandler((mockData, nil, mockError))
         return mockDataTask
-    }
+   }
+    
 }
 
 protocol URLSessionDataTaskProtocol {
@@ -36,7 +41,7 @@ protocol URLSessionDataTaskProtocol {
 }
 
 extension URLSessionDataTask: URLSessionDataTaskProtocol {
-    
+
 }
 
 class MockURLSessionDataTask: URLSessionDataTaskProtocol {

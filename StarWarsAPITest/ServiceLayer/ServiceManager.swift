@@ -16,7 +16,7 @@ struct ServiceManager {
         self.session = session
     }
     
-    func fetchStarWarsCharactersFromAPI(completion: @escaping (([StarWarsCharacter]) -> Void)) {
+    func fetchStarWarsCharactersFromAPI(completion: @escaping (([StarWarsCharacter]?) -> Void)) {
         
         let urlString = "https://swapi.co/api/people/"
         guard let url = URL(string: urlString) else {
@@ -29,6 +29,7 @@ struct ServiceManager {
             do {
                 let response = try JSONDecoder().decode(StarWarsCharactersFetchResponse.self, from: jsonData)
                 guard let characterArray = response.results else {
+                    completion(nil)
                     return
                 }
                 completion(characterArray)

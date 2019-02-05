@@ -28,13 +28,52 @@ class StarWarsServiceManagerTests: XCTestCase {
         }
         XCTAssert(session.mockSessionCalled)
     }
-    
+
     func testThatMockResumeIsCalled() {
         let serviceManager = ServiceManager(session: session)
         serviceManager.fetchStarWarsCharactersFromAPI() {
             (characterArray) in
         }
         XCTAssert(session.mockDataTask.mockResumeCalled)
+    }
+    
+    func testDataComesBackFromFetchStarWarsCharactersFromAPI() {
+        var responseArray: [StarWarsCharacter]?
+        let serviceManager = ServiceManager(session: URLSession.shared)
+        let testExpectation = expectation(description: "Wait for fetch to complete.")
+
+        serviceManager.fetchStarWarsCharactersFromAPI() {
+            (characterArray) in
+            responseArray = characterArray
+            testExpectation.fulfill()
+        }
+
+        wait(for: [testExpectation], timeout: 50)
+        XCTAssertNotNil(responseArray)
+    }
+    
+    func testFetchCharacters() {
+        var responseArray: [StarWarsCharacter]?
+
+        // Simply getting the file path to the local json file
+        guard let filePath = Bundle.main.path(forResource: "FetchCharacters_FirstCall", ofType: "json") else {
+            assert(false, "❌ Bad file path. FetchCharacters_FirstCall.json does not exist.")
+        }
+        
+        // Read in the local json file
+        guard let jsonData = FileManager.default.contents(atPath: filePath) else {
+            assert(false, "❌ Unable to get contents of file")
+        }
+
+        session.mockData = jsonData
+        let serviceManager = ServiceManager(session: session)
+
+        serviceManager.fetchStarWarsCharactersFromAPI() {
+            (characterArray) in
+            responseArray = characterArray
+        }
+        
+        XCTAssertNotNil(responseArray)
     }
 
 }

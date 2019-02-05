@@ -15,7 +15,11 @@ class CharacterListVM {
     
     func fetchStarWarsCharacters(completion: @escaping () -> Void) {
         serviceManager.fetchStarWarsCharactersFromAPI() {
-            (charactersArray) in
+            (returnedCharactersArray) in
+            guard let charactersArray = returnedCharactersArray else {
+                completion()
+                return
+            }
             self.starWarsCharacterArray = charactersArray
             completion()
         }

@@ -18,6 +18,7 @@
 		AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43B2FA2208E44400165188 /* CharacterListVM.swift */; };
 		AE5BFFD82209D194001911A7 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5BFFD72209D194001911A7 /* MockSession.swift */; };
 		AE5BFFDA2209D4E7001911A7 /* StarWarsServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5BFFD92209D4E7001911A7 /* StarWarsServiceManagerTests.swift */; };
+		AE5BFFDD2209EEDE001911A7 /* FetchCharacters_FirstCall.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5BFFDC2209EEDE001911A7 /* FetchCharacters_FirstCall.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AE43B2FA2208E44400165188 /* CharacterListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListVM.swift; sourceTree = "<group>"; };
 		AE5BFFD72209D194001911A7 /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		AE5BFFD92209D4E7001911A7 /* StarWarsServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsServiceManagerTests.swift; sourceTree = "<group>"; };
+		AE5BFFDC2209EEDE001911A7 /* FetchCharacters_FirstCall.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchCharacters_FirstCall.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +148,18 @@
 		AE5BFFD62209D16D001911A7 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				AE5BFFDB2209EEAC001911A7 /* JSON */,
 				AE5BFFD72209D194001911A7 /* MockSession.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		AE5BFFDB2209EEAC001911A7 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				AE5BFFDC2209EEDE001911A7 /* FetchCharacters_FirstCall.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 				AE43B2DD2208E0C800165188 /* LaunchScreen.storyboard in Resources */,
 				AE43B2DA2208E0C800165188 /* Assets.xcassets in Resources */,
 				AE43B2D82208E0C700165188 /* Main.storyboard in Resources */,
+				AE5BFFDD2209EEDE001911A7 /* FetchCharacters_FirstCall.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
