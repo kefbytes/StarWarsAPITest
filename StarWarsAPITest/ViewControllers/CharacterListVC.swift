@@ -25,7 +25,6 @@ class CharacterListVC: UIViewController {
         spinner.startAnimating()
         characterListVM.fetchStarWarsCharacters() {
             () in
-            print("characters fetched:")
             for character in self.characterListVM.starWarsCharacterArray {
                 guard let name = character.name else {
                     continue

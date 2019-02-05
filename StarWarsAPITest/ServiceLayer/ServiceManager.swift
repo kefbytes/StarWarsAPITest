@@ -10,13 +10,18 @@ import Foundation
 
 struct ServiceManager {
     
+    var session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
     func fetchStarWarsCharactersFromAPI(completion: @escaping (([StarWarsCharacter]) -> Void)) {
         
         let urlString = "https://swapi.co/api/people/"
         guard let url = URL(string: urlString) else {
             return
         }
-        let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
             guard let jsonData = data else {
                 return
