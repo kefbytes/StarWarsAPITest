@@ -9,13 +9,13 @@
 import Foundation
 
 protocol KefBytesServerConfig {
-    var hostBase: URL { get }
+    var hostBase: String { get }
 }
 
 struct ProdConfig: KefBytesServerConfig {
-    var hostBase: URL = URL(string: "https://swapi.co/api")!
+    var hostBase: String = "https://swapi.co/api"
 }
 
 struct TestConfig: KefBytesServerConfig {
-    var hostBase: URL = URL(string: "https://swapi.co/api")!
+    var hostBase: String = "https://swapi.co/api"
 }

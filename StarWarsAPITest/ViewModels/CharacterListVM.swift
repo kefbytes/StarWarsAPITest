@@ -11,12 +11,11 @@ import Foundation
 class CharacterListVM {
     
     var starWarsCharacterArray = [StarWarsCharacter]()
-    let request = FetchCharactersRequest()
-    
+    var request = FetchCharactersRequest()
+    let prodConfig = ProdConfig()
+
     func fetchStarWarsCharacters(completion: @escaping () -> Void) {
-        
-        let serverConfig = ProdConfig()
-        let serverConnection = KefBytesServerConnection(config: serverConfig)
+        let serverConnection = KefBytesServerConnection(config: prodConfig)
         serverConnection.execute(with: request) {
             (response, error) in
             if let _ = error {
@@ -28,6 +27,28 @@ class CharacterListVM {
                 return
             }
             self.starWarsCharacterArray = fetchCharactersResponse.characters
+            self.fetchNextPageOfCharacters() {
+                () in
+                completion()
+            }
+        }
+    }
+    
+    func fetchNextPageOfCharacters(completion: @escaping () -> Void) {
+        let serverConnection = KefBytesServerConnection(config: prodConfig)
+        let queryItem = URLQueryItem(name: "page", value: "2")
+        request.urlArguments = [queryItem]
+        serverConnection.execute(with: request) {
+            (response, error) in
+            if let _ = error {
+                // present alert
+                return
+            }
+            guard let fetchCharactersResponse = response as? FetchCharactersResponse else {
+                // present alert
+                return
+            }
+            self.starWarsCharacterArray.append(contentsOf: fetchCharactersResponse.characters)
             completion()
         }
     }
