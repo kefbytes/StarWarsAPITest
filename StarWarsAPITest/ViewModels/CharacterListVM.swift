@@ -10,17 +10,24 @@ import Foundation
 
 class CharacterListVM {
     
-    let serviceManager = ServiceManager()
     var starWarsCharacterArray = [StarWarsCharacter]()
+    let request = FetchCharactersRequest()
     
     func fetchStarWarsCharacters(completion: @escaping () -> Void) {
-        serviceManager.fetchStarWarsCharactersFromAPI() {
-            (returnedCharactersArray) in
-            guard let charactersArray = returnedCharactersArray else {
-                completion()
+        
+        let serverConfig = ProdConfig()
+        let serverConnection = KefBytesServerConnection(config: serverConfig)
+        serverConnection.execute(with: request) {
+            (response, error) in
+            if let _ = error {
+                // present alert
                 return
             }
-            self.starWarsCharacterArray = charactersArray
+            guard let fetchCharactersResponse = response as? FetchCharactersResponse else {
+                // present alert
+                return
+            }
+            self.starWarsCharacterArray = fetchCharactersResponse.characters
             completion()
         }
     }
