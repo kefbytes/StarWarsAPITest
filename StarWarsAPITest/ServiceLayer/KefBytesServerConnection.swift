@@ -26,9 +26,9 @@ class KefBytesServerConnection {
             for (index, arg) in urlArg.enumerated() {
                 switch index {
                 case 0:
-                    args = "?\(arg.name)=\(arg.value!)"
+                    args += "?\(arg.name)=\(arg.value!)"
                 default:
-                    args = "?\(arg.name)=\(arg.value!)"
+                    args += "&\(arg.name)=\(arg.value!)"
                 }
             }
         }

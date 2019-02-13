@@ -37,6 +37,9 @@ class CharacterListVM {
     func fetchNextPageOfCharacters(completion: @escaping () -> Void) {
         let serverConnection = KefBytesServerConnection(config: prodConfig)
         let queryItem = URLQueryItem(name: "page", value: "2")
+//        let queryItem2 = URLQueryItem(name: "page", value: "3")
+//        let queryItem3 = URLQueryItem(name: "page", value: "4")
+//        request.urlArguments = [queryItem, queryItem2, queryItem3]
         request.urlArguments = [queryItem]
         serverConnection.execute(with: request) {
             (response, error) in
