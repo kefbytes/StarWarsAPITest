@@ -11,30 +11,17 @@ import Foundation
 class KefBytesServerConnection {
     
     let serverConfig: KefBytesServerConfig
-    var session: URLSessionProtocol
     
-    init(config: KefBytesServerConfig, session: URLSessionProtocol = URLSession.shared) {
+    init(config: KefBytesServerConfig) {
         self.serverConfig = config
-        self.session = session
     }
     
     func execute(with request: KefBytesRequestProtocol, completion: @escaping ((KefBytesResponseProtocol?, Error?) -> Void)) {
-        let baseUrl: String = serverConfig.hostBase
-        let endpoint: String = request.urlPath
-        var args: String = ""
-        if let urlArg = request.urlArguments {
-            for (index, arg) in urlArg.enumerated() {
-                switch index {
-                case 0:
-                    args += "?\(arg.name)=\(arg.value!)"
-                default:
-                    args += "&\(arg.name)=\(arg.value!)"
-                }
-            }
+        guard let url = KefBytesURLBuilder.buildURL(with: serverConfig, request: request) else {
+            // display alert that url is not buildable
+            return
         }
-        let urlString = baseUrl + endpoint + args
-        let url = URL(string: urlString)
-        session.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 let fetchCharactersResponse = try FetchCharactersResponse(data: data, urlResponse: response!)
                 completion(fetchCharactersResponse, error)
