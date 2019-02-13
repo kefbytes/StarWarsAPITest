@@ -18,13 +18,19 @@ class KefBytesServerConnection {
         self.session = session
     }
     
-    // https://swapi.co/api/people/?page=2
     func execute(with request: KefBytesRequestProtocol, completion: @escaping ((KefBytesResponseProtocol?, Error?) -> Void)) {
         let baseUrl: String = serverConfig.hostBase
         let endpoint: String = request.urlPath
         var args: String = ""
         if let urlArg = request.urlArguments {
-            args = "?\(urlArg[0].name)=\(urlArg[0].value!)"
+            for (index, arg) in urlArg.enumerated() {
+                switch index {
+                case 0:
+                    args = "?\(arg.name)=\(arg.value!)"
+                default:
+                    args = "?\(arg.name)=\(arg.value!)"
+                }
+            }
         }
         let urlString = baseUrl + endpoint + args
         let url = URL(string: urlString)
@@ -36,6 +42,6 @@ class KefBytesServerConnection {
                 
             }
         } .resume()
-        
     }
+    
 }
