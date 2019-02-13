@@ -1,5 +1,5 @@
 //
-//  KefBytesURLBuilder.swift
+//  KefBytesURLHelper.swift
 //  StarWarsAPITest
 //
 //  Created by Kent Franks on 2/13/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KefBytesURLBuilder {
+struct KefBytesURLHelper {
     
     static func buildURL(with config: KefBytesServerConfig, request: KefBytesRequestProtocol) -> URL? {
         let baseUrl: String = config.hostBase

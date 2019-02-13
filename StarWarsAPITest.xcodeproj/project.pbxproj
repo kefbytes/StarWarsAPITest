@@ -18,6 +18,7 @@
 		AE5BFFDA2209D4E7001911A7 /* StarWarsServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5BFFD92209D4E7001911A7 /* StarWarsServiceManagerTests.swift */; };
 		AE5BFFDD2209EEDE001911A7 /* FetchCharacters_FirstCall.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5BFFDC2209EEDE001911A7 /* FetchCharacters_FirstCall.json */; };
 		AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */; };
+		AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */; };
 		AE7CD35A22136A01006EF6AD /* KefBytesRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35922136A01006EF6AD /* KefBytesRequestProtocol.swift */; };
 		AE7CD35C22136A2D006EF6AD /* KefBytesResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35B22136A2D006EF6AD /* KefBytesResponseProtocol.swift */; };
 		AE7CD35F22136D81006EF6AD /* FetchCharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */; };
@@ -52,6 +53,7 @@
 		AE5BFFD92209D4E7001911A7 /* StarWarsServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsServiceManagerTests.swift; sourceTree = "<group>"; };
 		AE5BFFDC2209EEDE001911A7 /* FetchCharacters_FirstCall.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchCharacters_FirstCall.json; sourceTree = "<group>"; };
 		AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesURLBuilder.swift; sourceTree = "<group>"; };
+		AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServiceError.swift; sourceTree = "<group>"; };
 		AE7CD35922136A01006EF6AD /* KefBytesRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesRequestProtocol.swift; sourceTree = "<group>"; };
 		AE7CD35B22136A2D006EF6AD /* KefBytesResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesResponseProtocol.swift; sourceTree = "<group>"; };
 		AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersRequest.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				AE7CD36322137106006EF6AD /* KefBytesServerConfig.swift */,
 				AE7CD3652213726A006EF6AD /* KefBytesServerConnection.swift */,
 				AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */,
+				AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */,
 				AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */,
 				AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */,
+				AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */,
 				AE7CD35A22136A01006EF6AD /* KefBytesRequestProtocol.swift in Sources */,
 				AE7CD35F22136D81006EF6AD /* FetchCharactersRequest.swift in Sources */,
 				AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */,

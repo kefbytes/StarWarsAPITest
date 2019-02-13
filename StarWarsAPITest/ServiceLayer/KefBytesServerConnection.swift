@@ -17,14 +17,18 @@ class KefBytesServerConnection {
     }
     
     func execute(with request: KefBytesRequestProtocol, completion: @escaping ((KefBytesResponseProtocol?, Error?) -> Void)) {
-        guard let url = KefBytesURLBuilder.buildURL(with: serverConfig, request: request) else {
-            // display alert that url is not buildable
+        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
+            completion(nil, KefBytesServiceError.unbuildableURL)
             return
         }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, responseFromDataTask, error) in
             do {
-                let fetchCharactersResponse = try FetchCharactersResponse(data: data, urlResponse: response!)
-                completion(fetchCharactersResponse, error)
+                guard let unwrappedResponse = responseFromDataTask else {
+                    completion(nil, error)
+                    return
+                }
+                let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                completion(response, nil)
             } catch {
                 
             }
