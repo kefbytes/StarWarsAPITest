@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias executeCompletion = (KefBytesResponseProtocol?, Error?) -> Void
+
 class KefBytesServerConnection {
     
     let serverConfig: KefBytesServerConfig
@@ -16,7 +18,7 @@ class KefBytesServerConnection {
         self.serverConfig = config
     }
     
-    func execute(with request: KefBytesRequestProtocol, completion: @escaping ((KefBytesResponseProtocol?, Error?) -> Void)) {
+    func execute(with request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
         guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
             completion(nil, KefBytesServiceError.unbuildableURL)
             return
