@@ -8,12 +8,6 @@
 
 import Foundation
 
-enum HTTPMethod {
-    case get
-    case post
-    case put
-}
-
 protocol KefBytesRequestProtocol {
     
     var requestTypeMethod: HTTPMethod { get }

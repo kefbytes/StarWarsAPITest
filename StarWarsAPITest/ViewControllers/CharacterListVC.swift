@@ -10,18 +10,23 @@ import UIKit
 
 class CharacterListVC: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var charactersTableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var charactersTitleLabel: UILabel!
     
-    
+    // MARK: - Properties
     let characterListVM = CharacterListVM()
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCharactaers()
+        charactersTitleLabel.isHidden = true
+        fetchCharacters()
     }
     
-    func fetchCharactaers() {
+    // MARK: - Fetch
+    func fetchCharacters() {
         spinner.startAnimating()
         characterListVM.fetchStarWarsCharacters() {
             () in
@@ -50,6 +55,7 @@ class CharacterListVC: UIViewController {
 
 }
 
+// MARK: - UITableView DataSource
 extension CharacterListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characterListVM.starWarsCharacterArray.count

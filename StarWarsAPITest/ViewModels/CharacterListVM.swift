@@ -10,13 +10,31 @@ import Foundation
 
 class CharacterListVM {
     
+    // MARK: - Properties
     var starWarsCharacterArray = [StarWarsCharacter]()
     var request = FetchCharactersRequest()
     let prodConfig = ProdConfig()
+    let serverConnection: KefBytesServerConnection?
+    let url: URL?
+    
+    // MARK: - Initializers
+    init() {
+        serverConnection = KefBytesServerConnection(config: prodConfig)
+        guard let url = KefBytesURLHelper.buildURL(with: prodConfig, request: request) else {
+            // present alert
+            self.url = nil
+            return
+        }
+        self.url = url
+    }
 
+    // MARK: - Fetch functions
     func fetchStarWarsCharacters(completion: @escaping () -> Void) {
-        let serverConnection = KefBytesServerConnection(config: prodConfig)
-        serverConnection.execute(with: request) {
+        guard let url = url else {
+            // present alert
+            return
+        }
+        serverConnection?.execute(with: url, and: request) {
             (response, error) in
             if let _ = error {
                 // present alert
@@ -35,13 +53,13 @@ class CharacterListVM {
     }
     
     func fetchNextPageOfCharacters(completion: @escaping () -> Void) {
-        let serverConnection = KefBytesServerConnection(config: prodConfig)
         let queryItem = URLQueryItem(name: "page", value: "2")
-//        let queryItem2 = URLQueryItem(name: "page", value: "3")
-//        let queryItem3 = URLQueryItem(name: "page", value: "4")
-//        request.urlArguments = [queryItem, queryItem2, queryItem3]
         request.urlArguments = [queryItem]
-        serverConnection.execute(with: request) {
+        guard let url = KefBytesURLHelper.buildURL(with: prodConfig, request: request) else {
+            // present alert
+            return
+        }
+        serverConnection?.execute(with: url, and: request) {
             (response, error) in
             if let _ = error {
                 // present alert

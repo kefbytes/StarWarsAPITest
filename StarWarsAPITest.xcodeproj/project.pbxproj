@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0FD9D1221729C900D084AC /* FilmsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D0221729C900D084AC /* FilmsListVC.swift */; };
+		AE0FD9D3221729DB00D084AC /* FilmsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D2221729DB00D084AC /* FilmsListVM.swift */; };
+		AE0FD9D522172BC900D084AC /* FetchFilmsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */; };
+		AE0FD9D722172C8900D084AC /* FetchFilmsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */; };
+		AE0FD9D922172CD700D084AC /* StarWarsFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */; };
+		AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */; };
+		AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */; };
 		AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43B2D22208E0C700165188 /* AppDelegate.swift */; };
 		AE43B2D82208E0C700165188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE43B2D62208E0C700165188 /* Main.storyboard */; };
 		AE43B2DA2208E0C800165188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE43B2D92208E0C800165188 /* Assets.xcassets */; };
@@ -38,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE0FD9D0221729C900D084AC /* FilmsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListVC.swift; sourceTree = "<group>"; };
+		AE0FD9D2221729DB00D084AC /* FilmsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListVM.swift; sourceTree = "<group>"; };
+		AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFilmsRequest.swift; sourceTree = "<group>"; };
+		AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFilmsResponse.swift; sourceTree = "<group>"; };
+		AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsFilm.swift; sourceTree = "<group>"; };
+		AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesURLRequest.swift; sourceTree = "<group>"; };
+		AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServiceConstants.swift; sourceTree = "<group>"; };
 		AE43B2CF2208E0C700165188 /* StarWarsAPITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsAPITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE43B2D22208E0C700165188 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE43B2D72208E0C700165188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AE43B2F82208E2BE00165188 /* CharacterListVC.swift */,
+				AE0FD9D0221729C900D084AC /* FilmsListVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -138,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				AE43B2FA2208E44400165188 /* CharacterListVM.swift */,
+				AE0FD9D2221729DB00D084AC /* FilmsListVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -151,6 +167,8 @@
 				AE7CD3652213726A006EF6AD /* KefBytesServerConnection.swift */,
 				AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */,
 				AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */,
+				AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */,
+				AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -159,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				AE43B2F62208E12A00165188 /* StarWarsCharacter.swift */,
+				AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */,
+				AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */,
 			);
 			path = RequestObjects;
 			sourceTree = "<group>";
@@ -191,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */,
+				AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */,
 			);
 			path = ResponseObjects;
 			sourceTree = "<group>";
@@ -306,17 +327,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */,
 				AE7CD36422137106006EF6AD /* KefBytesServerConfig.swift in Sources */,
 				AE7CD3662213726A006EF6AD /* KefBytesServerConnection.swift in Sources */,
 				AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */,
+				AE0FD9D1221729C900D084AC /* FilmsListVC.swift in Sources */,
 				AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */,
 				AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */,
+				AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */,
 				AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */,
+				AE0FD9D722172C8900D084AC /* FetchFilmsResponse.swift in Sources */,
 				AE7CD35A22136A01006EF6AD /* KefBytesRequestProtocol.swift in Sources */,
+				AE0FD9D3221729DB00D084AC /* FilmsListVM.swift in Sources */,
+				AE0FD9D922172CD700D084AC /* StarWarsFilm.swift in Sources */,
 				AE7CD35F22136D81006EF6AD /* FetchCharactersRequest.swift in Sources */,
 				AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */,
 				AE43B2F72208E12A00165188 /* StarWarsCharacter.swift in Sources */,
 				AE43B2F92208E2BE00165188 /* CharacterListVC.swift in Sources */,
+				AE0FD9D522172BC900D084AC /* FetchFilmsRequest.swift in Sources */,
 				AE7CD35C22136A2D006EF6AD /* KefBytesResponseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

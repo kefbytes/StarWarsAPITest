@@ -18,12 +18,9 @@ class KefBytesServerConnection {
         self.serverConfig = config
     }
     
-    func execute(with request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
-        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
-            completion(nil, KefBytesServiceError.unbuildableURL)
-            return
-        }
-        URLSession.shared.dataTask(with: url) { (data, responseFromDataTask, error) in
+    func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
+        URLSession.shared.dataTask(with: url) {
+            (data, responseFromDataTask, error) in
             do {
                 guard let unwrappedResponse = responseFromDataTask else {
                     completion(nil, error)
@@ -32,9 +29,31 @@ class KefBytesServerConnection {
                 let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
                 completion(response, nil)
             } catch {
-                
+                #warning("Handle the response init failure error ")
             }
-        } .resume()
+        }.resume()
     }
     
+    func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod,completion: @escaping (executeCompletion)) {
+        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
+            completion(nil, KefBytesServiceError.unbuildableURL)
+            return
+        }
+        let urlRequest = KefBytesURLRequest.create(with: url, type: type)
+        
+        URLSession.shared.dataTask(with: urlRequest) {
+            (data, responseFromDataTask, error) in
+            do {
+                guard let unwrappedResponse = responseFromDataTask else {
+                    completion(nil, error)
+                    return
+                }
+                let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                completion(response, nil)
+            } catch {
+                #warning("Handle the response init failure error ")
+            }
+        }.resume()
+    }
+
 }
