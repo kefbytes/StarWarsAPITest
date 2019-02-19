@@ -10,12 +10,22 @@ import Foundation
 
 protocol KefBytesServerConfig {
     var hostBase: String { get }
+    var discoMode: Bool { get }
 }
 
-struct ProdConfig: KefBytesServerConfig {
+struct ServerConfig: KefBytesServerConfig {
+    
     var hostBase: String = "https://swapi.co/api"
+    var discoMode: Bool =  false
+
+    init() {
+        discoMode = Session.discoMode
+        switch Session.environment {
+        case .dev:
+            hostBase = "https://swapi.co/api"
+        case .prod:
+            hostBase = "https://swapi.co/api"
+        }
+    }
 }
 
-struct TestConfig: KefBytesServerConfig {
-    var hostBase: String = "https://swapi.co/api"
-}

@@ -12,6 +12,7 @@ struct FetchFilmsRequest: KefBytesRequestProtocol {
     
     var requestTypeMethod: HTTPMethod = .get
     var urlPath: String = "/films/"
+    var mockFileName: String = "FetchFilms"
     var urlArguments: [URLQueryItem]? = nil
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil

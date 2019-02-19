@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="E42-UO-Ngk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t0b-kM-g99">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -70,12 +70,78 @@
             </objects>
             <point key="canvasLocation" x="1073" y="502"/>
         </scene>
+        <!--LoginVC-->
+        <scene sceneID="Anv-kA-gso">
+            <objects>
+                <viewController id="t0b-kM-g99" customClass="LoginVC" customModule="StarWarsAPITest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GJN-2i-zhg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HI0-14-hU4">
+                                <rect key="frame" x="230" y="218" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disco Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fp-45-HmY">
+                                <rect key="frame" x="89" y="223" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7W-g2-Dm6">
+                                <rect key="frame" x="168.5" y="274" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="t0b-kM-g99" eventType="touchUpInside" id="RpW-pJ-LK4"/>
+                                    <segue destination="E42-UO-Ngk" kind="show" id="p37-FI-aA2"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter user name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V8p-tl-CTW">
+                                <rect key="frame" x="124.5" y="108" width="126.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JeE-PR-gbO">
+                                <rect key="frame" x="127" y="158" width="121" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HI0-14-hU4" firstAttribute="leading" secondItem="3fp-45-HmY" secondAttribute="trailing" constant="50" id="1Fa-N1-Osr"/>
+                            <constraint firstItem="V8p-tl-CTW" firstAttribute="top" secondItem="jIz-Uo-cIO" secondAttribute="top" constant="88" id="A92-Ng-2qn"/>
+                            <constraint firstItem="JeE-PR-gbO" firstAttribute="top" secondItem="V8p-tl-CTW" secondAttribute="bottom" constant="20" id="Deq-kv-Fwa"/>
+                            <constraint firstItem="C7W-g2-Dm6" firstAttribute="top" secondItem="3fp-45-HmY" secondAttribute="bottom" constant="30" id="LRH-bi-ive"/>
+                            <constraint firstItem="C7W-g2-Dm6" firstAttribute="centerX" secondItem="GJN-2i-zhg" secondAttribute="centerX" id="VM3-vO-XlQ"/>
+                            <constraint firstItem="3fp-45-HmY" firstAttribute="top" secondItem="JeE-PR-gbO" secondAttribute="bottom" constant="35" id="dTQ-1j-KAu"/>
+                            <constraint firstItem="HI0-14-hU4" firstAttribute="centerY" secondItem="3fp-45-HmY" secondAttribute="centerY" id="eus-1Q-30E"/>
+                            <constraint firstItem="V8p-tl-CTW" firstAttribute="centerX" secondItem="GJN-2i-zhg" secondAttribute="centerX" id="gpq-Ca-4m9"/>
+                            <constraint firstItem="JeE-PR-gbO" firstAttribute="centerX" secondItem="GJN-2i-zhg" secondAttribute="centerX" id="kga-mV-fow"/>
+                            <constraint firstItem="3fp-45-HmY" firstAttribute="leading" secondItem="jIz-Uo-cIO" secondAttribute="leading" constant="89" id="orN-af-gzz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jIz-Uo-cIO"/>
+                    </view>
+                    <connections>
+                        <outlet property="discoModeLabel" destination="3fp-45-HmY" id="Zje-mI-2b6"/>
+                        <outlet property="discoModeSwitch" destination="HI0-14-hU4" id="wxB-ee-yOe"/>
+                        <outlet property="loginButton" destination="C7W-g2-Dm6" id="ict-wH-T6z"/>
+                        <outlet property="passwordTextField" destination="JeE-PR-gbO" id="CU6-kb-CeX"/>
+                        <outlet property="usernameTextField" destination="V8p-tl-CTW" id="7Vg-Gp-pYa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4FW-ni-4rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-658.39999999999998" y="133.5832083958021"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eM6-wP-Syp">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="E42-UO-Ngk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xkw-da-lfD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

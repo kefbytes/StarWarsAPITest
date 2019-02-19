@@ -15,8 +15,6 @@ enum HTTPMethod: String {
 }
 
 struct ServiceConstants {
-    
     static let applicationJsonValue = "Application/json"
     static let contentTypeKey = "Content-Type"
-
 }

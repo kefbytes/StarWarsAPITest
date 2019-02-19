@@ -13,14 +13,14 @@ class CharacterListVM {
     // MARK: - Properties
     var starWarsCharacterArray = [StarWarsCharacter]()
     var request = FetchCharactersRequest()
-    let prodConfig = ProdConfig()
+    let serverConfig = ServerConfig()
     let serverConnection: KefBytesServerConnection?
     let url: URL?
     
     // MARK: - Initializers
     init() {
-        serverConnection = KefBytesServerConnection(config: prodConfig)
-        guard let url = KefBytesURLHelper.buildURL(with: prodConfig, request: request) else {
+        serverConnection = KefBytesServerConnection(config: serverConfig)
+        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
             // present alert
             self.url = nil
             return
@@ -55,7 +55,7 @@ class CharacterListVM {
     func fetchNextPageOfCharacters(completion: @escaping () -> Void) {
         let queryItem = URLQueryItem(name: "page", value: "2")
         request.urlArguments = [queryItem]
-        guard let url = KefBytesURLHelper.buildURL(with: prodConfig, request: request) else {
+        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
             // present alert
             return
         }

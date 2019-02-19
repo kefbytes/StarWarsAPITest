@@ -13,19 +13,12 @@ class FilmsListVM {
     // MARK: - Properties
     var starWarsFilmsArray = [StarWarsFilm]()
     var request = FetchFilmsRequest()
-    let prodConfig = ProdConfig()
+    let serverConfig = ServerConfig()
     let serverConnection: KefBytesServerConnection?
-    let url: URL?
     
     // MARK: - Initializers
     init() {
-        serverConnection = KefBytesServerConnection(config: prodConfig)
-        guard let url = KefBytesURLHelper.buildURL(with: prodConfig, request: request) else {
-            // present alert
-            self.url = nil
-            return
-        }
-        self.url = url
+        serverConnection = KefBytesServerConnection(config: serverConfig)
     }
 
     // MARK: - Fetch functions

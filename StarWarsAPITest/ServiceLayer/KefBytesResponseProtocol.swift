@@ -10,7 +10,7 @@ import Foundation
 
 protocol KefBytesResponseProtocol {
 
-    var urlResponse: URLResponse { get }
-    init(data: Data?, urlResponse: URLResponse) throws
+    var urlResponse: URLResponse? { get }
+    init(data: Data?, urlResponse: URLResponse?) throws
 
 }

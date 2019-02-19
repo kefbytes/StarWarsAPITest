@@ -12,6 +12,7 @@ protocol KefBytesRequestProtocol {
     
     var requestTypeMethod: HTTPMethod { get }
     var urlPath: String { get }
+    var mockFileName: String { get }
     var urlArguments: [URLQueryItem]? { get }
     var headerItems: [String: String]? { get }
     var requestBody: Data? { get }

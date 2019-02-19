@@ -12,6 +12,7 @@ struct FetchCharactersRequest: KefBytesRequestProtocol {
     
     var requestTypeMethod: HTTPMethod = .get
     var urlPath: String = "/people/"
+    var mockFileName: String = "FetchCharacters"
     var urlArguments: [URLQueryItem]? = nil
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil

@@ -19,41 +19,67 @@ class KefBytesServerConnection {
     }
     
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
-        URLSession.shared.dataTask(with: url) {
-            (data, responseFromDataTask, error) in
+        if serverConfig.discoMode {
+            guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
+                assertionFailure("unable to read mock json file")
+                return
+            }
             do {
-                guard let unwrappedResponse = responseFromDataTask else {
-                    completion(nil, error)
-                    return
-                }
-                let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                let response = try request.responseType.init(data: jsonData, urlResponse: nil)
                 completion(response, nil)
             } catch {
-                #warning("Handle the response init failure error ")
+                    #warning("Handle the response init failure error ")
             }
-        }.resume()
+        } else {
+            URLSession.shared.dataTask(with: url) {
+                (data, responseFromDataTask, error) in
+                do {
+                    guard let unwrappedResponse = responseFromDataTask else {
+                        completion(nil, error)
+                        return
+                    }
+                    let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                    completion(response, nil)
+                } catch {
+                    #warning("Handle the response init failure error ")
+                }
+            }.resume()
+        }
     }
     
-    func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod,completion: @escaping (executeCompletion)) {
-        guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
-            completion(nil, KefBytesServiceError.unbuildableURL)
-            return
-        }
-        let urlRequest = KefBytesURLRequest.create(with: url, type: type)
-        
-        URLSession.shared.dataTask(with: urlRequest) {
-            (data, responseFromDataTask, error) in
+    func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
+        if serverConfig.discoMode {
+            guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
+                assertionFailure("unable to read mock json file")
+                return
+            }
             do {
-                guard let unwrappedResponse = responseFromDataTask else {
-                    completion(nil, error)
-                    return
-                }
-                let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                let response = try request.responseType.init(data: jsonData, urlResponse: nil)
                 completion(response, nil)
             } catch {
-                #warning("Handle the response init failure error ")
+                    #warning("Handle the response init failure error ")
             }
-        }.resume()
+        } else {
+            guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
+                completion(nil, KefBytesServiceError.unbuildableURL)
+                return
+            }
+            let urlRequest = KefBytesURLRequest.create(with: url, type: type)
+            
+            URLSession.shared.dataTask(with: urlRequest) {
+                (data, responseFromDataTask, error) in
+                do {
+                    guard let unwrappedResponse = responseFromDataTask else {
+                        completion(nil, error)
+                        return
+                    }
+                    let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                    completion(response, nil)
+                } catch {
+                    #warning("Handle the response init failure error ")
+                }
+            }.resume()
+        }
     }
 
 }

@@ -21,6 +21,7 @@ class FilmsListVC: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("🤖 FilmsListVC discoMode: \(Session.discoMode)")
         filmsTitleLabel.isHidden = true
         fetchFilms()
     }

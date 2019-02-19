@@ -10,10 +10,10 @@ import Foundation
 
 struct FetchCharactersResponse: KefBytesResponseProtocol {
     
-    var urlResponse: URLResponse
+    var urlResponse: URLResponse?
     let characters: [StarWarsCharacter]
     
-    init(data: Data?, urlResponse: URLResponse) throws {
+    init(data: Data?, urlResponse: URLResponse?) throws {
         if let jsonData = data {
             let response = try JSONDecoder().decode(StarWarsCharactersFetchResponse.self, from: jsonData)
             self.urlResponse = urlResponse
