@@ -14,6 +14,12 @@
 		AE0FD9D922172CD700D084AC /* StarWarsFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */; };
 		AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */; };
 		AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */; };
+		AE425774221DEB3500D72717 /* PlanetsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425773221DEB3500D72717 /* PlanetsListVC.swift */; };
+		AE425776221DEB5300D72717 /* PlanetsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425775221DEB5300D72717 /* PlanetsListVM.swift */; };
+		AE425778221DF72000D72717 /* FetchPlanetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425777221DF72000D72717 /* FetchPlanetsRequest.swift */; };
+		AE42577A221DF78800D72717 /* FetchPlanetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425779221DF78800D72717 /* FetchPlanetsResponse.swift */; };
+		AE42577C221DF83B00D72717 /* StarWarsPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE42577B221DF83B00D72717 /* StarWarsPlanet.swift */; };
+		AE42577E221DF95C00D72717 /* FetchPlanets.json in Resources */ = {isa = PBXBuildFile; fileRef = AE42577D221DF95C00D72717 /* FetchPlanets.json */; };
 		AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43B2D22208E0C700165188 /* AppDelegate.swift */; };
 		AE43B2D82208E0C700165188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE43B2D62208E0C700165188 /* Main.storyboard */; };
 		AE43B2DA2208E0C800165188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE43B2D92208E0C800165188 /* Assets.xcassets */; };
@@ -55,6 +61,12 @@
 		AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsFilm.swift; sourceTree = "<group>"; };
 		AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesURLRequest.swift; sourceTree = "<group>"; };
 		AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServiceConstants.swift; sourceTree = "<group>"; };
+		AE425773221DEB3500D72717 /* PlanetsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsListVC.swift; sourceTree = "<group>"; };
+		AE425775221DEB5300D72717 /* PlanetsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsListVM.swift; sourceTree = "<group>"; };
+		AE425777221DF72000D72717 /* FetchPlanetsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlanetsRequest.swift; sourceTree = "<group>"; };
+		AE425779221DF78800D72717 /* FetchPlanetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlanetsResponse.swift; sourceTree = "<group>"; };
+		AE42577B221DF83B00D72717 /* StarWarsPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsPlanet.swift; sourceTree = "<group>"; };
+		AE42577D221DF95C00D72717 /* FetchPlanets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchPlanets.json; sourceTree = "<group>"; };
 		AE43B2CF2208E0C700165188 /* StarWarsAPITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsAPITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE43B2D22208E0C700165188 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE43B2D72208E0C700165188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 				AE43B2F82208E2BE00165188 /* CharacterListVC.swift */,
 				AE0FD9D0221729C900D084AC /* FilmsListVC.swift */,
 				AE803648221C4AD000B4B70D /* LoginVC.swift */,
+				AE425773221DEB3500D72717 /* PlanetsListVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -159,6 +172,7 @@
 			children = (
 				AE43B2FA2208E44400165188 /* CharacterListVM.swift */,
 				AE0FD9D2221729DB00D084AC /* FilmsListVM.swift */,
+				AE425775221DEB5300D72717 /* PlanetsListVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -174,6 +188,7 @@
 				AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */,
 				AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */,
 				AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */,
+				AE80364F221C7DDD00B4B70D /* MockJsonReader.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -183,6 +198,7 @@
 			children = (
 				AE43B2F62208E12A00165188 /* StarWarsCharacter.swift */,
 				AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */,
+				AE42577B221DF83B00D72717 /* StarWarsPlanet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				AE5BFFDB2209EEAC001911A7 /* JSON */,
-				AE80364F221C7DDD00B4B70D /* MockJsonReader.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -201,6 +216,7 @@
 			children = (
 				AE5BFFDC2209EEDE001911A7 /* FetchCharacters.json */,
 				AE80364D221C75E700B4B70D /* FetchFilms.json */,
+				AE42577D221DF95C00D72717 /* FetchPlanets.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -210,6 +226,7 @@
 			children = (
 				AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */,
 				AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */,
+				AE425777221DF72000D72717 /* FetchPlanetsRequest.swift */,
 			);
 			path = RequestObjects;
 			sourceTree = "<group>";
@@ -219,6 +236,7 @@
 			children = (
 				AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */,
 				AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */,
+				AE425779221DF78800D72717 /* FetchPlanetsResponse.swift */,
 			);
 			path = ResponseObjects;
 			sourceTree = "<group>";
@@ -323,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE42577E221DF95C00D72717 /* FetchPlanets.json in Resources */,
 				AE43B2DD2208E0C800165188 /* LaunchScreen.storyboard in Resources */,
 				AE43B2DA2208E0C800165188 /* Assets.xcassets in Resources */,
 				AE43B2D82208E0C700165188 /* Main.storyboard in Resources */,
@@ -346,13 +365,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */,
+				AE425778221DF72000D72717 /* FetchPlanetsRequest.swift in Sources */,
 				AE7CD36422137106006EF6AD /* KefBytesServerConfig.swift in Sources */,
 				AE7CD3662213726A006EF6AD /* KefBytesServerConnection.swift in Sources */,
 				AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */,
 				AE0FD9D1221729C900D084AC /* FilmsListVC.swift in Sources */,
 				AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */,
+				AE42577C221DF83B00D72717 /* StarWarsPlanet.swift in Sources */,
 				AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */,
 				AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */,
+				AE42577A221DF78800D72717 /* FetchPlanetsResponse.swift in Sources */,
 				AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */,
 				AE803650221C7DDD00B4B70D /* MockJsonReader.swift in Sources */,
 				AE0FD9D722172C8900D084AC /* FetchFilmsResponse.swift in Sources */,
@@ -365,7 +387,9 @@
 				AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */,
 				AE43B2F72208E12A00165188 /* StarWarsCharacter.swift in Sources */,
 				AE43B2F92208E2BE00165188 /* CharacterListVC.swift in Sources */,
+				AE425776221DEB5300D72717 /* PlanetsListVM.swift in Sources */,
 				AE0FD9D522172BC900D084AC /* FetchFilmsRequest.swift in Sources */,
+				AE425774221DEB3500D72717 /* PlanetsListVC.swift in Sources */,
 				AE7CD35C22136A2D006EF6AD /* KefBytesResponseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

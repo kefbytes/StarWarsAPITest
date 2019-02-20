@@ -1,43 +1,42 @@
 //
-//  FilmsListVC.swift
+//  PlanetsListVC.swift
 //  StarWarsAPITest
 //
-//  Created by Kent Franks on 2/15/19.
+//  Created by Kent Franks on 2/20/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.
 //
 
 import UIKit
 
-class FilmsListVC: UIViewController {
-    
-    // MARK: - outlets
-    @IBOutlet weak var filmsTableView: UITableView!
+class PlanetsListVC: UIViewController {
+
+    // MARK: - Outlets
+    @IBOutlet weak var planetsTitleLabel: UILabel!
+    @IBOutlet weak var planetsTableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var filmsTitleLabel: UILabel!
-
+    
     // MARK: - Properties
-    let filmsListVM = FilmsListVM()
+    let planetsListVM = PlanetsListVM()
 
-    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        filmsTitleLabel.isHidden = true
-        fetchFilms()
+        planetsTitleLabel.isHidden = true
+        fetchPlanets()
     }
     
     // MARK: - Fetch
-    func fetchFilms() {
+    func fetchPlanets() {
         spinner.startAnimating()
-        filmsListVM.fetchStarWarsFilms {
+        planetsListVM.fetchStarWarsPlanets {
             () in
-            for film in self.filmsListVM.starWarsFilmsArray {
-                guard let title = film.title else {
+            for planet in self.planetsListVM.starWarsPlanetsArray {
+                guard let name = planet.name else {
                     continue
                 }
-                print(title)
+                print(name)
                 DispatchQueue.main.async {
                     self.spinner.stopAnimating()
-                    self.filmsTableView.reloadData()
+                    self.planetsTableView.reloadData()
                 }
             }
         }
@@ -56,14 +55,14 @@ class FilmsListVC: UIViewController {
 }
 
 // MARK: - UITableView DataSource
-extension FilmsListVC: UITableViewDataSource {
+extension PlanetsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filmsListVM.starWarsFilmsArray.count
+        return planetsListVM.starWarsPlanetsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath)
-        cell.textLabel?.text = filmsListVM.starWarsFilmsArray[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "planetCell", for: indexPath)
+        cell.textLabel?.text = planetsListVM.starWarsPlanetsArray[indexPath.row].name
         return cell
     }
 }

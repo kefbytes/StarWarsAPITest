@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="502"/>
+            <point key="canvasLocation" x="1050" y="-624"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="Anv-kA-gso">
@@ -148,11 +148,72 @@
                     <connections>
                         <segue destination="rJe-3H-qvq" kind="relationship" relationship="viewControllers" id="jOz-8y-L7E"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kTJ-3r-Oge"/>
+                        <segue destination="lMb-MI-BNK" kind="relationship" relationship="viewControllers" id="lHa-vv-ecA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9A-c8-ObR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
+        </scene>
+        <!--Planets-->
+        <scene sceneID="h6r-Nl-u8O">
+            <objects>
+                <viewController id="lMb-MI-BNK" customClass="PlanetsListVC" customModule="StarWarsAPITest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sgi-I8-uH2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kaj-mD-t4f">
+                                <rect key="frame" x="133" y="48" width="109" height="32"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-nK-Chv">
+                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="planetCell" id="Fn3-fI-yVt">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fn3-fI-yVt" id="5N9-0Y-7Dy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lMb-MI-BNK" id="74G-S2-IOf"/>
+                                    <outlet property="delegate" destination="lMb-MI-BNK" id="acE-jS-iC5"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gji-MA-cll">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gji-MA-cll" firstAttribute="centerY" secondItem="Sgi-I8-uH2" secondAttribute="centerY" id="96l-Hj-Fks"/>
+                            <constraint firstItem="b5k-nK-Chv" firstAttribute="top" secondItem="177-ja-ivw" secondAttribute="top" constant="75" id="9pD-w1-Yju"/>
+                            <constraint firstItem="Kaj-mD-t4f" firstAttribute="centerX" secondItem="Sgi-I8-uH2" secondAttribute="centerX" id="EPv-Jz-crc"/>
+                            <constraint firstItem="177-ja-ivw" firstAttribute="trailing" secondItem="b5k-nK-Chv" secondAttribute="trailing" id="GCt-ei-Cdy"/>
+                            <constraint firstItem="177-ja-ivw" firstAttribute="bottom" secondItem="b5k-nK-Chv" secondAttribute="bottom" id="Isr-mG-y58"/>
+                            <constraint firstItem="b5k-nK-Chv" firstAttribute="top" secondItem="Kaj-mD-t4f" secondAttribute="bottom" constant="15" id="Liw-4z-GAQ"/>
+                            <constraint firstItem="gji-MA-cll" firstAttribute="centerX" secondItem="Sgi-I8-uH2" secondAttribute="centerX" id="c23-9n-Lui"/>
+                            <constraint firstItem="b5k-nK-Chv" firstAttribute="leading" secondItem="177-ja-ivw" secondAttribute="leading" id="xr8-gD-fua"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="177-ja-ivw"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Planets" id="Oyo-Ea-Mfx"/>
+                    <connections>
+                        <outlet property="planetsTableView" destination="b5k-nK-Chv" id="PDZ-Sy-pPH"/>
+                        <outlet property="planetsTitleLabel" destination="Kaj-mD-t4f" id="bZV-uQ-FaN"/>
+                        <outlet property="spinner" destination="gji-MA-cll" id="VwP-pG-GNg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5h-ue-TpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.8" y="133.5832083958021"/>
         </scene>
         <!--Films-->
         <scene sceneID="mvx-10-vI1">
@@ -211,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYg-iK-ygD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="-183.05847076461771"/>
+            <point key="canvasLocation" x="140" y="-623"/>
         </scene>
     </scenes>
 </document>
