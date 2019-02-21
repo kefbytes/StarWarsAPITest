@@ -10,4 +10,6 @@ import Foundation
 
 enum KefBytesServiceError: Error {
     case unbuildableURL
+    case unableToInitResponseObject
+    case unableToReadMockJson
 }

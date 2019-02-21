@@ -21,14 +21,14 @@ class KefBytesServerConnection {
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
-                assertionFailure("unable to read mock json file")
+                completion(nil, KefBytesServiceError.unableToReadMockJson)
                 return
             }
             do {
                 let response = try request.responseType.init(data: jsonData, urlResponse: nil)
                 completion(response, nil)
             } catch {
-                    #warning("Handle the response init failure error ")
+                completion(nil, KefBytesServiceError.unableToInitResponseObject)
             }
         } else {
             URLSession.shared.dataTask(with: url) {
@@ -41,7 +41,7 @@ class KefBytesServerConnection {
                     let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
                     completion(response, nil)
                 } catch {
-                    #warning("Handle the response init failure error ")
+                    completion(nil, KefBytesServiceError.unableToInitResponseObject)
                 }
             }.resume()
         }
@@ -50,14 +50,14 @@ class KefBytesServerConnection {
     func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
-                assertionFailure("unable to read mock json file")
+                completion(nil, KefBytesServiceError.unableToReadMockJson)
                 return
             }
             do {
                 let response = try request.responseType.init(data: jsonData, urlResponse: nil)
                 completion(response, nil)
             } catch {
-                    #warning("Handle the response init failure error ")
+                completion(nil, KefBytesServiceError.unableToInitResponseObject)
             }
         } else {
             guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
@@ -76,7 +76,7 @@ class KefBytesServerConnection {
                     let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
                     completion(response, nil)
                 } catch {
-                    #warning("Handle the response init failure error ")
+                    completion(nil, KefBytesServiceError.unableToInitResponseObject)
                 }
             }.resume()
         }
