@@ -52,8 +52,12 @@ class PlanetsListVM {
             self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
             self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
             self.starWarsPlanetsArray += fetchPlanetsResponse3.planets
-            // TODO: Handle the force unwrap
-            self.starWarsPlanetsArray = self.starWarsPlanetsArray.sorted { $0.name! < $1.name! }
+            self.starWarsPlanetsArray = self.starWarsPlanetsArray.sorted {
+                guard let name1 = $0.name, let name2 = $1.name else {
+                    return false
+                }
+                return name1 < name2
+            }
             completion()
         }
     }
