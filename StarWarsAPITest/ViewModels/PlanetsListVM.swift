@@ -13,27 +13,37 @@ class PlanetsListVM {
     // MARK: - Properties
     var starWarsPlanetsArray = [StarWarsPlanet]()
     var request = FetchPlanetsRequest()
+    var request2 = FetchPlanetsRequest()
+    var requests = [KefBytesRequestProtocol]()
     let serverConfig = ServerConfig()
     let serverConnection: KefBytesServerConnection?
     
     // MARK: - Initializers
     init() {
         serverConnection = KefBytesServerConnection(config: serverConfig)
+        request2.urlPath = "/planets/?page=2"
+        requests.append(request)
+        requests.append(request2)
     }
     
     // MARK: - Fetch functions
     func fetchStarWarsPlanets(completion: @escaping () -> Void) {
-        serverConnection?.execute(with: request, and: .get) {
+        serverConnection?.execute(withTwoAsyncRequestsOfTheSameType: requests, and: .get) {
             (response, error) in
             if let _ = error {
                 // present alert
                 return
             }
-            guard let fetchPlanetsResponse = response as? FetchPlanetsResponse else {
+            guard let fetchPlanetsResponse1 = response?[0] as? FetchPlanetsResponse else {
                 // present alert
                 return
             }
-            self.starWarsPlanetsArray = fetchPlanetsResponse.planets
+            guard let fetchPlanetsResponse2 = response?[1] as? FetchPlanetsResponse else {
+                // present alert
+                return
+            }
+            self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
+            self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
             completion()
         }
     }
