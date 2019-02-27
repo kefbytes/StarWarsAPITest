@@ -135,7 +135,7 @@ class KefBytesServerConnection {
                         completion(nil, error)
                         return
                     }
-                    let response = try twoAsyncRequests[1].responseType.init(data: data, urlResponse: unwrappedResponse)
+                    let response = try requests[1].responseType.init(data: data, urlResponse: unwrappedResponse)
                     responseArray.append(response)
                 } catch {
                     completion(nil, KefBytesServiceError.unableToInitResponseObject)
