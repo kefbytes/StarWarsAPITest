@@ -14,6 +14,7 @@ class PlanetsListVM {
     var starWarsPlanetsArray = [StarWarsPlanet]()
     var request = FetchPlanetsRequest()
     var request2 = FetchPlanetsRequest()
+    var request3 = FetchPlanetsRequest()
     var requests = [KefBytesRequestProtocol]()
     let serverConfig = ServerConfig()
     let serverConnection: KefBytesServerConnection?
@@ -22,13 +23,15 @@ class PlanetsListVM {
     init() {
         serverConnection = KefBytesServerConnection(config: serverConfig)
         request2.urlPath = "/planets/?page=2"
+        request3.urlPath = "/planets/?page=3"
         requests.append(request)
         requests.append(request2)
+        requests.append(request3)
     }
     
     // MARK: - Fetch functions
     func fetchStarWarsPlanets(completion: @escaping () -> Void) {
-        serverConnection?.execute(withTwoAsyncRequestsOfTheSameType: requests, and: .get) {
+        serverConnection?.execute(withMultipleAsyncRequestsOfTheSameType: requests, and: .get) {
             (response, error) in
             if let _ = error {
                 // present alert
@@ -42,8 +45,15 @@ class PlanetsListVM {
                 // present alert
                 return
             }
+            guard let fetchPlanetsResponse3 = response?[2] as? FetchPlanetsResponse else {
+                // present alert
+                return
+            }
             self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
             self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
+            self.starWarsPlanetsArray += fetchPlanetsResponse3.planets
+            // TODO: Handle the force unwrap
+            self.starWarsPlanetsArray = self.starWarsPlanetsArray.sorted { $0.name! < $1.name! }
             completion()
         }
     }

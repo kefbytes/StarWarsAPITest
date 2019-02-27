@@ -83,7 +83,7 @@ class KefBytesServerConnection {
         }
     }
     
-    func execute(withTwoAsyncRequestsOfTheSameType requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletion)) {
+    func execute(withMultipleAsyncRequestsOfTheSameType requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletion)) {
         var responseArray: [KefBytesResponseProtocol] = [KefBytesResponseProtocol]()
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
@@ -99,52 +99,32 @@ class KefBytesServerConnection {
             }
         } else {
             let dispatchGroup = DispatchGroup()
-            // First item in group
-            dispatchGroup.enter()
-            guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: requests[0]) else {
-                completion(nil, KefBytesServiceError.unbuildableURL)
-                return
-            }
-            let urlRequest = KefBytesURLRequest.create(with: url, type: type)
-            URLSession.shared.dataTask(with: urlRequest) {
-                (data, responseFromDataTask, error) in
-                do {
-                    guard let unwrappedResponse = responseFromDataTask else {
-                        completion(nil, error)
-                        return
-                    }
-                    let response = try requests[0].responseType.init(data: data, urlResponse: unwrappedResponse)
-                    responseArray.append(response)
-                } catch {
-                    completion(nil, KefBytesServiceError.unableToInitResponseObject)
+            let unwrappedRequests = requests.compactMap { $0 }
+            for request in unwrappedRequests {
+                dispatchGroup.enter()
+                guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
+                    completion(nil, KefBytesServiceError.unbuildableURL)
+                    return
                 }
-                dispatchGroup.leave()
-            }.resume()
-            
-            // Second item in group
-            dispatchGroup.enter()
-            guard let url2 = KefBytesURLHelper.buildURL(with: serverConfig, request: requests[1]) else {
-                completion(nil, KefBytesServiceError.unbuildableURL)
-                return
-            }
-            let urlRequest2 = KefBytesURLRequest.create(with: url2, type: type)
-            URLSession.shared.dataTask(with: urlRequest2) {
-                (data, responseFromDataTask, error) in
-                do {
-                    guard let unwrappedResponse = responseFromDataTask else {
-                        completion(nil, error)
-                        return
+                let urlRequest = KefBytesURLRequest.create(with: url, type: type)
+                URLSession.shared.dataTask(with: urlRequest) {
+                    (data, responseFromDataTask, error) in
+                    do {
+                        guard let unwrappedResponse = responseFromDataTask else {
+                            completion(nil, error)
+                            return
+                        }
+                        let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
+                        responseArray.append(response)
+                    } catch {
+                        completion(nil, KefBytesServiceError.unableToInitResponseObject)
                     }
-                    let response = try requests[1].responseType.init(data: data, urlResponse: unwrappedResponse)
-                    responseArray.append(response)
-                } catch {
-                    completion(nil, KefBytesServiceError.unableToInitResponseObject)
-                }
-                dispatchGroup.leave()
-            }.resume()
-
+                    print("🤖 request: \(request.urlPath) completed")
+                    dispatchGroup.leave()
+                }.resume()
+            }
             dispatchGroup.notify(queue: .main) {
-                print("🤖 Both groups completed 👍")
+                print("🤖 All tasks completed")
                 completion(responseArray, nil)
             }
         }
