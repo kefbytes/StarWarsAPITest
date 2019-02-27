@@ -21,6 +21,7 @@ class KefBytesServerConnection {
     }
     
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
+        print("🤖 execute: with url")
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
@@ -50,6 +51,7 @@ class KefBytesServerConnection {
     }
     
     func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
+        print("🤖 execute: with request")
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
@@ -85,6 +87,7 @@ class KefBytesServerConnection {
     }
     
     func execute(withMultipleAsyncRequestsOfTheSameType requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletion)) {
+        print("🤖 execute: withMultipleAsyncRequestsOfTheSameType")
         var responseArray: [KefBytesResponseProtocol] = [KefBytesResponseProtocol]()
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
@@ -131,7 +134,8 @@ class KefBytesServerConnection {
         }
     }
 
-    func execute(withMultipleAsyncRequestsOfDifferentrTypes requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
+    func execute(withMultipleAsyncRequestsOfDifferentTypes requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
+        print("🤖 execute: withMultipleAsyncRequestsOfDifferentTypes")
         var responseDict: [String : KefBytesResponseProtocol] = [String : KefBytesResponseProtocol]()
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {

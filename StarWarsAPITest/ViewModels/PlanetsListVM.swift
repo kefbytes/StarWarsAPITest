@@ -30,22 +30,54 @@ class PlanetsListVM {
     }
     
     // MARK: - Fetch functions
+//    func fetchStarWarsPlanets(completion: @escaping () -> Void) {
+//        serverConnection?.execute(withMultipleAsyncRequestsOfTheSameType: requests, and: .get) {
+//            (response, error) in
+//            if let _ = error {
+//                // present alert
+//                return
+//            }
+//            guard let fetchPlanetsResponse1 = response?[0] as? FetchPlanetsResponse else {
+//                // present alert
+//                return
+//            }
+//            guard let fetchPlanetsResponse2 = response?[1] as? FetchPlanetsResponse else {
+//                // present alert
+//                return
+//            }
+//            guard let fetchPlanetsResponse3 = response?[2] as? FetchPlanetsResponse else {
+//                // present alert
+//                return
+//            }
+//            self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
+//            self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
+//            self.starWarsPlanetsArray += fetchPlanetsResponse3.planets
+//            self.starWarsPlanetsArray = self.starWarsPlanetsArray.sorted {
+//                guard let name1 = $0.name, let name2 = $1.name else {
+//                    return false
+//                }
+//                return name1 < name2
+//            }
+//            completion()
+//        }
+//    }
+ 
     func fetchStarWarsPlanets(completion: @escaping () -> Void) {
-        serverConnection?.execute(withMultipleAsyncRequestsOfTheSameType: requests, and: .get) {
+        serverConnection?.execute(withMultipleAsyncRequestsOfDifferentTypes: requests, and: .get) {
             (response, error) in
             if let _ = error {
                 // present alert
                 return
             }
-            guard let fetchPlanetsResponse1 = response?[0] as? FetchPlanetsResponse else {
+            guard let fetchPlanetsResponse1 = response?[self.requests[0].urlPath] as? FetchPlanetsResponse else {
                 // present alert
                 return
             }
-            guard let fetchPlanetsResponse2 = response?[1] as? FetchPlanetsResponse else {
+            guard let fetchPlanetsResponse2 = response?[self.requests[1].urlPath] as? FetchPlanetsResponse else {
                 // present alert
                 return
             }
-            guard let fetchPlanetsResponse3 = response?[2] as? FetchPlanetsResponse else {
+            guard let fetchPlanetsResponse3 = response?[self.requests[2].urlPath] as? FetchPlanetsResponse else {
                 // present alert
                 return
             }
@@ -61,5 +93,5 @@ class PlanetsListVM {
             completion()
         }
     }
-    
+
 }
