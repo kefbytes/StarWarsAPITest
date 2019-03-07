@@ -15,6 +15,7 @@ typealias executeGroupCompletionDifferentTypes = ([String : KefBytesResponseProt
 class KefBytesServerConnection {
     
     let serverConfig: KefBytesServerConfig
+    var activeDataTasks: [String: URLSessionDataTask] = [:]
     
     init(config: KefBytesServerConfig) {
         self.serverConfig = config
@@ -86,56 +87,8 @@ class KefBytesServerConnection {
         }
     }
     
-    func execute(withMultipleAsyncRequestsOfTheSameType requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletion)) {
-        print("🤖 execute: withMultipleAsyncRequestsOfTheSameType")
-        var responseArray: [KefBytesResponseProtocol] = [KefBytesResponseProtocol]()
-        if serverConfig.discoMode {
-            guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
-                completion(nil, KefBytesServiceError.unableToReadMockJson)
-                return
-            }
-            do {
-                let response = try requests[0].responseType.init(data: jsonData, urlResponse: nil)
-                responseArray.append(response)
-                completion(responseArray, nil)
-            } catch {
-                completion(nil, KefBytesServiceError.unableToInitResponseObject)
-            }
-        } else {
-            let dispatchGroup = DispatchGroup()
-            let unwrappedRequests = requests.compactMap { $0 }
-            for request in unwrappedRequests {
-                dispatchGroup.enter()
-                guard let url = KefBytesURLHelper.buildURL(with: serverConfig, request: request) else {
-                    completion(nil, KefBytesServiceError.unbuildableURL)
-                    return
-                }
-                let urlRequest = KefBytesURLRequest.create(with: url, type: type)
-                URLSession.shared.dataTask(with: urlRequest) {
-                    (data, responseFromDataTask, error) in
-                    do {
-                        guard let unwrappedResponse = responseFromDataTask else {
-                            completion(nil, error)
-                            return
-                        }
-                        let response = try request.responseType.init(data: data, urlResponse: unwrappedResponse)
-                        responseArray.append(response)
-                    } catch {
-                        completion(nil, KefBytesServiceError.unableToInitResponseObject)
-                    }
-                    print("🤖 request: \(request.urlPath) completed")
-                    dispatchGroup.leave()
-                }.resume()
-            }
-            dispatchGroup.notify(queue: .main) {
-                print("🤖 All tasks completed")
-                completion(responseArray, nil)
-            }
-        }
-    }
-
-    func execute(withMultipleAsyncRequestsOfDifferentTypes requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
-        print("🤖 execute: withMultipleAsyncRequestsOfDifferentTypes")
+    func execute(withMultipleAsyncRequests requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
+        print("🤖 execute: withMultipleAsyncRequests")
         var responseDict: [String : KefBytesResponseProtocol] = [String : KefBytesResponseProtocol]()
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
@@ -182,4 +135,5 @@ class KefBytesServerConnection {
             }
         }
     }
+    
 }

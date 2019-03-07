@@ -31,7 +31,7 @@ class PlanetsListVM {
     
     // MARK: - Fetch
     func fetchStarWarsPlanets(completion: @escaping () -> Void) {
-        serverConnection?.execute(withMultipleAsyncRequestsOfDifferentTypes: requests, and: .get) {
+        serverConnection?.execute(withMultipleAsyncRequests: requests, and: .get) {
             (response, error) in
             if let _ = error {
                 // present alert
