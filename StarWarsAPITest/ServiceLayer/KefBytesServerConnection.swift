@@ -14,6 +14,7 @@ typealias executeGroupCompletionDifferentTypes = ([String : KefBytesResponseProt
 
 class KefBytesServerConnection {
     
+    let defaultSession = URLSession(configuration: .default)
     let serverConfig: KefBytesServerConfig
     var activeDataTasks: [String: URLSessionDataTask] = [:]
     
@@ -23,6 +24,7 @@ class KefBytesServerConnection {
     
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
         print("🤖 execute: with url")
+        var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
@@ -35,7 +37,7 @@ class KefBytesServerConnection {
                 completion(nil, KefBytesServiceError.unableToInitResponseObject)
             }
         } else {
-            URLSession.shared.dataTask(with: url) {
+            dataTask = defaultSession.dataTask(with: url) {
                 (data, responseFromDataTask, error) in
                 do {
                     guard let unwrappedResponse = responseFromDataTask else {
@@ -47,12 +49,15 @@ class KefBytesServerConnection {
                 } catch {
                     completion(nil, KefBytesServiceError.unableToInitResponseObject)
                 }
-            }.resume()
+            }
+            dataTask?.resume()
+            activeDataTasks[request.urlPath] = dataTask
         }
     }
     
     func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
         print("🤖 execute: with request")
+        var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
@@ -71,7 +76,7 @@ class KefBytesServerConnection {
             }
             let urlRequest = KefBytesURLRequest.create(with: url, type: type)
             
-            URLSession.shared.dataTask(with: urlRequest) {
+            dataTask = defaultSession.dataTask(with: urlRequest) {
                 (data, responseFromDataTask, error) in
                 do {
                     guard let unwrappedResponse = responseFromDataTask else {
@@ -83,12 +88,15 @@ class KefBytesServerConnection {
                 } catch {
                     completion(nil, KefBytesServiceError.unableToInitResponseObject)
                 }
-            }.resume()
+            }
+            dataTask?.resume()
+            activeDataTasks[request.urlPath] = dataTask
         }
     }
     
     func execute(withMultipleAsyncRequests requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
         print("🤖 execute: withMultipleAsyncRequests")
+        var dataTask: URLSessionDataTask?
         var responseDict: [String : KefBytesResponseProtocol] = [String : KefBytesResponseProtocol]()
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
@@ -112,7 +120,7 @@ class KefBytesServerConnection {
                     return
                 }
                 let urlRequest = KefBytesURLRequest.create(with: url, type: type)
-                URLSession.shared.dataTask(with: urlRequest) {
+                dataTask = defaultSession.dataTask(with: urlRequest) {
                     (data, responseFromDataTask, error) in
                     do {
                         guard let unwrappedResponse = responseFromDataTask else {
@@ -127,7 +135,10 @@ class KefBytesServerConnection {
                     }
                     print("🤖 request: \(request.urlPath) completed")
                     dispatchGroup.leave()
-                    }.resume()
+                    }
+                dataTask?.resume()
+                print("State of task:\(request.urlPath) = \(dataTask?.state)")
+                activeDataTasks[request.urlPath] = dataTask
             }
             dispatchGroup.notify(queue: .main) {
                 print("🤖 All tasks completed")
