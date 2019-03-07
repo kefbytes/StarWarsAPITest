@@ -60,6 +60,7 @@ class PlanetsListVM {
             }
             completion()
         }
+        serverConnection?.cancelTask(with: request2)
     }
 
 }

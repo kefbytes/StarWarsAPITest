@@ -40,6 +40,7 @@ class KefBytesServerConnection {
             dataTask = defaultSession.dataTask(with: url) {
                 (data, responseFromDataTask, error) in
                 do {
+                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
                     guard let unwrappedResponse = responseFromDataTask else {
                         completion(nil, error)
                         return
@@ -51,7 +52,7 @@ class KefBytesServerConnection {
                 }
             }
             dataTask?.resume()
-            activeDataTasks[request.urlPath] = dataTask
+            activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
         }
     }
     
@@ -79,6 +80,7 @@ class KefBytesServerConnection {
             dataTask = defaultSession.dataTask(with: urlRequest) {
                 (data, responseFromDataTask, error) in
                 do {
+                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
                     guard let unwrappedResponse = responseFromDataTask else {
                         completion(nil, error)
                         return
@@ -90,7 +92,7 @@ class KefBytesServerConnection {
                 }
             }
             dataTask?.resume()
-            activeDataTasks[request.urlPath] = dataTask
+            activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
         }
     }
     
@@ -122,6 +124,7 @@ class KefBytesServerConnection {
                 let urlRequest = KefBytesURLRequest.create(with: url, type: type)
                 dataTask = defaultSession.dataTask(with: urlRequest) {
                     (data, responseFromDataTask, error) in
+                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
                     do {
                         guard let unwrappedResponse = responseFromDataTask else {
                             completion(nil, error)
@@ -137,8 +140,7 @@ class KefBytesServerConnection {
                     dispatchGroup.leave()
                     }
                 dataTask?.resume()
-                print("State of task:\(request.urlPath) = \(dataTask?.state)")
-                activeDataTasks[request.urlPath] = dataTask
+                activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
             }
             dispatchGroup.notify(queue: .main) {
                 print("🤖 All tasks completed")
@@ -147,4 +149,14 @@ class KefBytesServerConnection {
         }
     }
     
+    func cancelTask(with request: KefBytesRequestProtocol) {
+        let dataTask = self.activeDataTasks[self.taskName(urlPath: request.urlPath)]
+        print("🤖 State of task:\(request.urlPath) = \(String(describing: dataTask?.state.rawValue))")
+        dataTask?.cancel()
+        print("🤖 State of task:\(request.urlPath) = \(String(describing: dataTask?.state.rawValue))")
+    }
+ 
+    private func taskName(urlPath: String) -> String {
+        return "DataTask.\(urlPath)"
+    }
 }
