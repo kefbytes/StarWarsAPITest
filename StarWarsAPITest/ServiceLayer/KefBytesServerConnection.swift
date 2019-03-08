@@ -40,7 +40,7 @@ class KefBytesServerConnection {
             dataTask = defaultSession.dataTask(with: url) {
                 (data, responseFromDataTask, error) in
                 do {
-                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
+                    self.activeDataTasks[request.taskId] = nil
                     guard let unwrappedResponse = responseFromDataTask else {
                         completion(nil, error)
                         return
@@ -52,7 +52,7 @@ class KefBytesServerConnection {
                 }
             }
             dataTask?.resume()
-            activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
+            activeDataTasks[request.taskId] = dataTask
         }
     }
     
@@ -80,7 +80,7 @@ class KefBytesServerConnection {
             dataTask = defaultSession.dataTask(with: urlRequest) {
                 (data, responseFromDataTask, error) in
                 do {
-                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
+                    self.activeDataTasks[request.taskId] = nil
                     guard let unwrappedResponse = responseFromDataTask else {
                         completion(nil, error)
                         return
@@ -92,7 +92,7 @@ class KefBytesServerConnection {
                 }
             }
             dataTask?.resume()
-            activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
+            activeDataTasks[request.taskId] = dataTask
         }
     }
     
@@ -124,9 +124,14 @@ class KefBytesServerConnection {
                 let urlRequest = KefBytesURLRequest.create(with: url, type: type)
                 dataTask = defaultSession.dataTask(with: urlRequest) {
                     (data, responseFromDataTask, error) in
-                    self.activeDataTasks[self.taskName(urlPath: request.urlPath)] = nil
+                    self.activeDataTasks[request.taskId] = nil
                     do {
                         guard let unwrappedResponse = responseFromDataTask else {
+                            print("🤖 responseFromDataTask == nil, error = \(String(describing: error?.localizedDescription))")
+                            if let errorDesc = error?.localizedDescription,  errorDesc == "cancelled" {
+                                dispatchGroup.leave()
+                                return
+                            }
                             completion(nil, error)
                             return
                         }
@@ -134,13 +139,15 @@ class KefBytesServerConnection {
                         responseDict[request.urlPath] = response
 
                     } catch {
+                        print("🤖 catch \(error.localizedDescription)")
                         completion(nil, KefBytesServiceError.unableToInitResponseObject)
+                        dispatchGroup.leave()
                     }
-                    print("🤖 request: \(request.urlPath) completed")
+                    print("🤖 request: \(request.taskId) completed")
                     dispatchGroup.leave()
-                    }
+                }
                 dataTask?.resume()
-                activeDataTasks[taskName(urlPath: request.urlPath)] = dataTask
+                activeDataTasks[request.taskId] = dataTask
             }
             dispatchGroup.notify(queue: .main) {
                 print("🤖 All tasks completed")
@@ -150,13 +157,10 @@ class KefBytesServerConnection {
     }
     
     func cancelTask(with request: KefBytesRequestProtocol) {
-        let dataTask = self.activeDataTasks[self.taskName(urlPath: request.urlPath)]
-        print("🤖 State of task:\(request.urlPath) = \(String(describing: dataTask?.state.rawValue))")
+        let dataTask = self.activeDataTasks[request.taskId]
         dataTask?.cancel()
-        print("🤖 State of task:\(request.urlPath) = \(String(describing: dataTask?.state.rawValue))")
+        print("🤖 \(request.taskId) cancelled")
+
     }
  
-    private func taskName(urlPath: String) -> String {
-        return "DataTask.\(urlPath)"
-    }
 }

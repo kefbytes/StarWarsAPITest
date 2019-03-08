@@ -37,21 +37,15 @@ class PlanetsListVM {
                 // present alert
                 return
             }
-            guard let fetchPlanetsResponse1 = response?[self.requests[0].urlPath] as? FetchPlanetsResponse else {
-                // present alert
-                return
+            if let fetchPlanetsResponse1 = response?[self.requests[0].urlPath] as? FetchPlanetsResponse {
+                self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
             }
-            guard let fetchPlanetsResponse2 = response?[self.requests[1].urlPath] as? FetchPlanetsResponse else {
-                // present alert
-                return
+            if let fetchPlanetsResponse2 = response?[self.requests[1].urlPath] as? FetchPlanetsResponse {
+                self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
             }
-            guard let fetchPlanetsResponse3 = response?[self.requests[2].urlPath] as? FetchPlanetsResponse else {
-                // present alert
-                return
+            if let fetchPlanetsResponse3 = response?[self.requests[2].urlPath] as? FetchPlanetsResponse {
+                self.starWarsPlanetsArray += fetchPlanetsResponse3.planets
             }
-            self.starWarsPlanetsArray = fetchPlanetsResponse1.planets
-            self.starWarsPlanetsArray += fetchPlanetsResponse2.planets
-            self.starWarsPlanetsArray += fetchPlanetsResponse3.planets
             self.starWarsPlanetsArray = self.starWarsPlanetsArray.sorted {
                 guard let name1 = $0.name, let name2 = $1.name else {
                     return false

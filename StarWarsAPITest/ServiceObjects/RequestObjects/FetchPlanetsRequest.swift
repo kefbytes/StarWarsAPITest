@@ -17,5 +17,5 @@ struct FetchPlanetsRequest: KefBytesRequestProtocol {
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil
     var responseType: KefBytesResponseProtocol.Type = FetchPlanetsResponse.self
-    
+
 }

@@ -17,5 +17,5 @@ struct FetchFilmsRequest: KefBytesRequestProtocol {
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil
     var responseType: KefBytesResponseProtocol.Type = FetchFilmsResponse.self
-    
+
 }

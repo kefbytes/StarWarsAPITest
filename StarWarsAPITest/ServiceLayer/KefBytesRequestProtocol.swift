@@ -17,5 +17,14 @@ protocol KefBytesRequestProtocol {
     var headerItems: [String: String]? { get }
     var requestBody: Data? { get }
     var responseType: KefBytesResponseProtocol.Type { get }
+    var taskId: String { get }
     
+}
+
+extension KefBytesRequestProtocol {
+    var taskId: String {
+        get {
+            return "dataTaskId.\(urlPath)"
+        }
+    }
 }
