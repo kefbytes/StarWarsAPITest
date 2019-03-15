@@ -23,7 +23,6 @@ class KefBytesServerConnection {
     }
     
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
-        print("🤖 execute: with url")
         var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
@@ -57,7 +56,6 @@ class KefBytesServerConnection {
     }
     
     func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
-        print("🤖 execute: with request")
         var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
             guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
@@ -97,7 +95,6 @@ class KefBytesServerConnection {
     }
     
     func execute(withMultipleAsyncRequests requests: [KefBytesRequestProtocol], and type: HTTPMethod, completion: @escaping (executeGroupCompletionDifferentTypes)) {
-        print("🤖 execute: withMultipleAsyncRequests")
         var dataTask: URLSessionDataTask?
         var responseDict: [String : KefBytesResponseProtocol] = [String : KefBytesResponseProtocol]()
         if serverConfig.discoMode {
@@ -127,7 +124,6 @@ class KefBytesServerConnection {
                     self.activeDataTasks[request.taskId] = nil
                     do {
                         guard let unwrappedResponse = responseFromDataTask else {
-                            print("🤖 responseFromDataTask == nil, error = \(String(describing: error?.localizedDescription))")
                             if let errorDesc = error?.localizedDescription,  errorDesc == "cancelled" {
                                 dispatchGroup.leave()
                                 return
@@ -139,18 +135,15 @@ class KefBytesServerConnection {
                         responseDict[request.urlPath] = response
 
                     } catch {
-                        print("🤖 catch \(error.localizedDescription)")
                         completion(nil, KefBytesServiceError.unableToInitResponseObject)
                         dispatchGroup.leave()
                     }
-                    print("🤖 request: \(request.taskId) completed")
                     dispatchGroup.leave()
                 }
                 dataTask?.resume()
                 activeDataTasks[request.taskId] = dataTask
             }
             dispatchGroup.notify(queue: .main) {
-                print("🤖 All tasks completed")
                 completion(responseDict, nil)
             }
         }
@@ -159,8 +152,6 @@ class KefBytesServerConnection {
     func cancelTask(with request: KefBytesRequestProtocol) {
         let dataTask = self.activeDataTasks[request.taskId]
         dataTask?.cancel()
-        print("🤖 \(request.taskId) cancelled")
-
     }
  
 }

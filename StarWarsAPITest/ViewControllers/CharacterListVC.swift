@@ -21,7 +21,6 @@ class CharacterListVC: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("🤖 CharacterListVC discoMode: \(Session.discoMode)")
         charactersTitleLabel.isHidden = true
         fetchCharacters()
     }
