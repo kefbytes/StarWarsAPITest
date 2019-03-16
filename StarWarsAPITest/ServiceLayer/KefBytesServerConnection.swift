@@ -25,7 +25,7 @@ class KefBytesServerConnection {
     func execute(with url: URL, and request: KefBytesRequestProtocol, completion: @escaping (executeCompletion)) {
         var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
-            guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
+            guard let jsonData = KefBytesMockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
                 return
             }
@@ -58,7 +58,7 @@ class KefBytesServerConnection {
     func execute(with request: KefBytesRequestProtocol, and type: HTTPMethod, completion: @escaping (executeCompletion)) {
         var dataTask: URLSessionDataTask?
         if serverConfig.discoMode {
-            guard let jsonData = MockJsonReader.readJson(with: request.mockFileName) else {
+            guard let jsonData = KefBytesMockJsonReader.readJson(with: request.mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
                 return
             }
@@ -98,7 +98,7 @@ class KefBytesServerConnection {
         var dataTask: URLSessionDataTask?
         var responseDict: [String : KefBytesResponseProtocol] = [String : KefBytesResponseProtocol]()
         if serverConfig.discoMode {
-            guard let jsonData = MockJsonReader.readJson(with: requests[0].mockFileName) else {
+            guard let jsonData = KefBytesMockJsonReader.readJson(with: requests[0].mockFileName) else {
                 completion(nil, KefBytesServiceError.unableToReadMockJson)
                 return
             }

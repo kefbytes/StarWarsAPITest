@@ -1,5 +1,5 @@
 //
-//  MockJsonReader.swift
+//  KefBytesMockJsonReader.swift
 //  StarWarsAPITest
 //
 //  Created by Kent Franks on 2/19/19.
@@ -10,7 +10,7 @@ import Foundation
 
 let jsonFileType = "json"
 
-struct MockJsonReader {
+struct KefBytesMockJsonReader {
     
     static func readJson(with fileName: String) -> Data? {
         guard let filePath = Bundle.main.path(forResource: fileName, ofType: jsonFileType) else {

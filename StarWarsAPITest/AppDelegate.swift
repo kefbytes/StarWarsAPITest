@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if Dev
             Session.environment = .dev
         #elseif Prod
-            Session.environment = .prod
+            Session.environment = .prod 
         #endif
         return true
     }
