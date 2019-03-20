@@ -12,8 +12,8 @@
 		AE0FD9D522172BC900D084AC /* FetchFilmsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */; };
 		AE0FD9D722172C8900D084AC /* FetchFilmsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */; };
 		AE0FD9D922172CD700D084AC /* StarWarsFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */; };
-		AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */; };
-		AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */; };
+		AE0FD9DB2217332A00D084AC /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DA2217332A00D084AC /* URLRequestBuilder.swift */; };
+		AE0FD9DD2217340300D084AC /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FD9DC2217340300D084AC /* ServiceConstants.swift */; };
 		AE425774221DEB3500D72717 /* PlanetsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425773221DEB3500D72717 /* PlanetsListVC.swift */; };
 		AE425776221DEB5300D72717 /* PlanetsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425775221DEB5300D72717 /* PlanetsListVM.swift */; };
 		AE425778221DF72000D72717 /* FetchPlanetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE425777221DF72000D72717 /* FetchPlanetsRequest.swift */; };
@@ -29,18 +29,18 @@
 		AE43B2F92208E2BE00165188 /* CharacterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43B2F82208E2BE00165188 /* CharacterListVC.swift */; };
 		AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43B2FA2208E44400165188 /* CharacterListVM.swift */; };
 		AE5BFFDD2209EEDE001911A7 /* FetchCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5BFFDC2209EEDE001911A7 /* FetchCharacters.json */; };
-		AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */; };
-		AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */; };
-		AE7CD35A22136A01006EF6AD /* KefBytesRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35922136A01006EF6AD /* KefBytesRequestProtocol.swift */; };
-		AE7CD35C22136A2D006EF6AD /* KefBytesResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35B22136A2D006EF6AD /* KefBytesResponseProtocol.swift */; };
+		AE64659B2214AB9C00C4BB1C /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659A2214AB9C00C4BB1C /* URLHelper.swift */; };
+		AE64659D2214B3C300C4BB1C /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64659C2214B3C300C4BB1C /* ServiceError.swift */; };
+		AE7CD35A22136A01006EF6AD /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35922136A01006EF6AD /* RequestProtocol.swift */; };
+		AE7CD35C22136A2D006EF6AD /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35B22136A2D006EF6AD /* ResponseProtocol.swift */; };
 		AE7CD35F22136D81006EF6AD /* FetchCharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */; };
 		AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */; };
-		AE7CD36422137106006EF6AD /* KefBytesServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD36322137106006EF6AD /* KefBytesServerConfig.swift */; };
-		AE7CD3662213726A006EF6AD /* KefBytesServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD3652213726A006EF6AD /* KefBytesServerConnection.swift */; };
+		AE7CD36422137106006EF6AD /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD36322137106006EF6AD /* ServerConfig.swift */; };
+		AE7CD3662213726A006EF6AD /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD3652213726A006EF6AD /* ServerConnection.swift */; };
 		AE803649221C4AD000B4B70D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE803648221C4AD000B4B70D /* LoginVC.swift */; };
-		AE80364C221C4FAA00B4B70D /* KefBytesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80364B221C4FAA00B4B70D /* KefBytesSession.swift */; };
+		AE80364C221C4FAA00B4B70D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80364B221C4FAA00B4B70D /* Session.swift */; };
 		AE80364E221C75E700B4B70D /* FetchFilms.json in Resources */ = {isa = PBXBuildFile; fileRef = AE80364D221C75E700B4B70D /* FetchFilms.json */; };
-		AE803650221C7DDD00B4B70D /* KefBytesMockJsonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80364F221C7DDD00B4B70D /* KefBytesMockJsonReader.swift */; };
+		AE803650221C7DDD00B4B70D /* MockJsonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80364F221C7DDD00B4B70D /* MockJsonReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +59,8 @@
 		AE0FD9D422172BC900D084AC /* FetchFilmsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFilmsRequest.swift; sourceTree = "<group>"; };
 		AE0FD9D622172C8900D084AC /* FetchFilmsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFilmsResponse.swift; sourceTree = "<group>"; };
 		AE0FD9D822172CD700D084AC /* StarWarsFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsFilm.swift; sourceTree = "<group>"; };
-		AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesURLRequest.swift; sourceTree = "<group>"; };
-		AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServiceConstants.swift; sourceTree = "<group>"; };
+		AE0FD9DA2217332A00D084AC /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
+		AE0FD9DC2217340300D084AC /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 		AE425773221DEB3500D72717 /* PlanetsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsListVC.swift; sourceTree = "<group>"; };
 		AE425775221DEB5300D72717 /* PlanetsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsListVM.swift; sourceTree = "<group>"; };
 		AE425777221DF72000D72717 /* FetchPlanetsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlanetsRequest.swift; sourceTree = "<group>"; };
@@ -80,18 +80,18 @@
 		AE43B2F82208E2BE00165188 /* CharacterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListVC.swift; sourceTree = "<group>"; };
 		AE43B2FA2208E44400165188 /* CharacterListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListVM.swift; sourceTree = "<group>"; };
 		AE5BFFDC2209EEDE001911A7 /* FetchCharacters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchCharacters.json; sourceTree = "<group>"; };
-		AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesURLBuilder.swift; sourceTree = "<group>"; };
-		AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServiceError.swift; sourceTree = "<group>"; };
-		AE7CD35922136A01006EF6AD /* KefBytesRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesRequestProtocol.swift; sourceTree = "<group>"; };
-		AE7CD35B22136A2D006EF6AD /* KefBytesResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesResponseProtocol.swift; sourceTree = "<group>"; };
+		AE64659A2214AB9C00C4BB1C /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		AE64659C2214B3C300C4BB1C /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		AE7CD35922136A01006EF6AD /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		AE7CD35B22136A2D006EF6AD /* ResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProtocol.swift; sourceTree = "<group>"; };
 		AE7CD35E22136D81006EF6AD /* FetchCharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersRequest.swift; sourceTree = "<group>"; };
 		AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersResponse.swift; sourceTree = "<group>"; };
-		AE7CD36322137106006EF6AD /* KefBytesServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServerConfig.swift; sourceTree = "<group>"; };
-		AE7CD3652213726A006EF6AD /* KefBytesServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesServerConnection.swift; sourceTree = "<group>"; };
+		AE7CD36322137106006EF6AD /* ServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
+		AE7CD3652213726A006EF6AD /* ServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		AE803648221C4AD000B4B70D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		AE80364B221C4FAA00B4B70D /* KefBytesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesSession.swift; sourceTree = "<group>"; };
+		AE80364B221C4FAA00B4B70D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AE80364D221C75E700B4B70D /* FetchFilms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchFilms.json; sourceTree = "<group>"; };
-		AE80364F221C7DDD00B4B70D /* KefBytesMockJsonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KefBytesMockJsonReader.swift; sourceTree = "<group>"; };
+		AE80364F221C7DDD00B4B70D /* MockJsonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJsonReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,16 +179,16 @@
 		AE43B2FE2208E4B900165188 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				AE80364B221C4FAA00B4B70D /* KefBytesSession.swift */,
-				AE7CD36322137106006EF6AD /* KefBytesServerConfig.swift */,
-				AE7CD35922136A01006EF6AD /* KefBytesRequestProtocol.swift */,
-				AE7CD35B22136A2D006EF6AD /* KefBytesResponseProtocol.swift */,
-				AE0FD9DA2217332A00D084AC /* KefBytesURLRequest.swift */,
-				AE64659A2214AB9C00C4BB1C /* KefBytesURLBuilder.swift */,
-				AE64659C2214B3C300C4BB1C /* KefBytesServiceError.swift */,
-				AE80364F221C7DDD00B4B70D /* KefBytesMockJsonReader.swift */,
-				AE0FD9DC2217340300D084AC /* KefBytesServiceConstants.swift */,
-				AE7CD3652213726A006EF6AD /* KefBytesServerConnection.swift */,
+				AE80364B221C4FAA00B4B70D /* Session.swift */,
+				AE7CD36322137106006EF6AD /* ServerConfig.swift */,
+				AE7CD35922136A01006EF6AD /* RequestProtocol.swift */,
+				AE7CD35B22136A2D006EF6AD /* ResponseProtocol.swift */,
+				AE0FD9DA2217332A00D084AC /* URLRequestBuilder.swift */,
+				AE64659A2214AB9C00C4BB1C /* URLHelper.swift */,
+				AE64659C2214B3C300C4BB1C /* ServiceError.swift */,
+				AE80364F221C7DDD00B4B70D /* MockJsonReader.swift */,
+				AE0FD9DC2217340300D084AC /* ServiceConstants.swift */,
+				AE7CD3652213726A006EF6AD /* ServerConnection.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -364,33 +364,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE0FD9DB2217332A00D084AC /* KefBytesURLRequest.swift in Sources */,
+				AE0FD9DB2217332A00D084AC /* URLRequestBuilder.swift in Sources */,
 				AE425778221DF72000D72717 /* FetchPlanetsRequest.swift in Sources */,
-				AE7CD36422137106006EF6AD /* KefBytesServerConfig.swift in Sources */,
-				AE7CD3662213726A006EF6AD /* KefBytesServerConnection.swift in Sources */,
+				AE7CD36422137106006EF6AD /* ServerConfig.swift in Sources */,
+				AE7CD3662213726A006EF6AD /* ServerConnection.swift in Sources */,
 				AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */,
 				AE0FD9D1221729C900D084AC /* FilmsListVC.swift in Sources */,
 				AE43B2D32208E0C700165188 /* AppDelegate.swift in Sources */,
 				AE42577C221DF83B00D72717 /* StarWarsPlanet.swift in Sources */,
 				AE43B2FB2208E44400165188 /* CharacterListVM.swift in Sources */,
-				AE0FD9DD2217340300D084AC /* KefBytesServiceConstants.swift in Sources */,
+				AE0FD9DD2217340300D084AC /* ServiceConstants.swift in Sources */,
 				AE42577A221DF78800D72717 /* FetchPlanetsResponse.swift in Sources */,
-				AE64659D2214B3C300C4BB1C /* KefBytesServiceError.swift in Sources */,
-				AE803650221C7DDD00B4B70D /* KefBytesMockJsonReader.swift in Sources */,
+				AE64659D2214B3C300C4BB1C /* ServiceError.swift in Sources */,
+				AE803650221C7DDD00B4B70D /* MockJsonReader.swift in Sources */,
 				AE0FD9D722172C8900D084AC /* FetchFilmsResponse.swift in Sources */,
-				AE7CD35A22136A01006EF6AD /* KefBytesRequestProtocol.swift in Sources */,
+				AE7CD35A22136A01006EF6AD /* RequestProtocol.swift in Sources */,
 				AE0FD9D3221729DB00D084AC /* FilmsListVM.swift in Sources */,
 				AE0FD9D922172CD700D084AC /* StarWarsFilm.swift in Sources */,
 				AE7CD35F22136D81006EF6AD /* FetchCharactersRequest.swift in Sources */,
-				AE80364C221C4FAA00B4B70D /* KefBytesSession.swift in Sources */,
+				AE80364C221C4FAA00B4B70D /* Session.swift in Sources */,
 				AE803649221C4AD000B4B70D /* LoginVC.swift in Sources */,
-				AE64659B2214AB9C00C4BB1C /* KefBytesURLBuilder.swift in Sources */,
+				AE64659B2214AB9C00C4BB1C /* URLHelper.swift in Sources */,
 				AE43B2F72208E12A00165188 /* StarWarsCharacter.swift in Sources */,
 				AE43B2F92208E2BE00165188 /* CharacterListVC.swift in Sources */,
 				AE425776221DEB5300D72717 /* PlanetsListVM.swift in Sources */,
 				AE0FD9D522172BC900D084AC /* FetchFilmsRequest.swift in Sources */,
 				AE425774221DEB3500D72717 /* PlanetsListVC.swift in Sources */,
-				AE7CD35C22136A2D006EF6AD /* KefBytesResponseProtocol.swift in Sources */,
+				AE7CD35C22136A2D006EF6AD /* ResponseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

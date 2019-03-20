@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchFilmsResponse: KefBytesResponseProtocol {
+struct FetchFilmsResponse: ResponseProtocol {
     
     var urlResponse: URLResponse?
     let films: [StarWarsFilm]

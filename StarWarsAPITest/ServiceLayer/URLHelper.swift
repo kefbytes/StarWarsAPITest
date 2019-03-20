@@ -1,6 +1,6 @@
 //
-//  KefBytesURLHelper.swift
-//  StarWarsAPITest
+//  URLHelper.swift
+//  
 //
 //  Created by Kent Franks on 2/13/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct KefBytesURLHelper {
+struct URLHelper {
     
-    static func buildURL(with config: ServerConfigProtocol, request: KefBytesRequestProtocol) -> URL? {
+    static func buildURL(with config: ServerConfigProtocol, request: RequestProtocol) -> URL? {
         let baseUrl: String = config.hostBase
         let endpoint: String = request.urlPath
         var args: String = ""

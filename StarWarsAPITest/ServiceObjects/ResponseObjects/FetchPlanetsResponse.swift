@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchPlanetsResponse: KefBytesResponseProtocol {
+struct FetchPlanetsResponse: ResponseProtocol {
     
     var urlResponse: URLResponse?
     let planets: [StarWarsPlanet]

@@ -1,6 +1,6 @@
 //
-//  KefBytesServiceConstants.swift
-//  StarWarsAPITest
+//  ServiceConstants.swift
+//  
 //
 //  Created by Kent Franks on 2/15/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.

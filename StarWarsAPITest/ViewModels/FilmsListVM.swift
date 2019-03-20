@@ -14,11 +14,11 @@ class FilmsListVM {
     var starWarsFilmsArray = [StarWarsFilm]()
     var request = FetchFilmsRequest()
     let serverConfig = ServerConfig()
-    let serverConnection: KefBytesServerConnection?
+    let serverConnection: ServerConnection?
     
     // MARK: - Initializers
     init() {
-        serverConnection = KefBytesServerConnection(config: serverConfig)
+        serverConnection = ServerConnection(config: serverConfig)
     }
 
     // MARK: - Fetch functions

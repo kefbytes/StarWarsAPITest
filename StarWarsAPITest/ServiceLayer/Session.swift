@@ -1,6 +1,6 @@
 //
-//  KefBytesSession.swift
-//  StarWarsAPITest
+//  Session.swift
+//  
 //
 //  Created by Kent Franks on 2/19/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.
@@ -15,7 +15,7 @@ enum Environment: String {
     case prod = "Prod"
 }
 
-struct KefBytesSession {
+struct Session {
     static var discoMode = false
     static var environment: Environment = .dev
 }

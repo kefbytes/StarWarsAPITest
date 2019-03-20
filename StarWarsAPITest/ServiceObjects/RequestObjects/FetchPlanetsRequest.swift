@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchPlanetsRequest: KefBytesRequestProtocol {
+struct FetchPlanetsRequest: RequestProtocol {
     
     var requestTypeMethod: HTTPMethod = .get
     var urlPath: String = "/planets/"
@@ -16,6 +16,6 @@ struct FetchPlanetsRequest: KefBytesRequestProtocol {
     var urlArguments: [URLQueryItem]? = nil
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil
-    var responseType: KefBytesResponseProtocol.Type = FetchPlanetsResponse.self
+    var responseType: ResponseProtocol.Type = FetchPlanetsResponse.self
 
 }

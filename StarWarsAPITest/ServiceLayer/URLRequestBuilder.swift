@@ -1,6 +1,6 @@
 //
-//  KefBytesURLRequest.swift
-//  StarWarsAPITest
+//  URLRequest.swift
+//  
 //
 //  Created by Kent Franks on 2/15/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KefBytesURLRequest {
+struct URLRequestBuilder {
     
     // MARK: - URLRequest
     static func create(with url: URL, type: HTTPMethod) -> URLRequest {

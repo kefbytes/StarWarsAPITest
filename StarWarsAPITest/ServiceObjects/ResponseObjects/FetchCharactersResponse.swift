@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchCharactersResponse: KefBytesResponseProtocol {
+struct FetchCharactersResponse: ResponseProtocol {
     
     var urlResponse: URLResponse?
     let characters: [StarWarsCharacter]

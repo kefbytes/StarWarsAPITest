@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if KefBytesSession.environment == .dev {
+        if Session.environment == .dev {
             discoModeSwitch.isHidden = false
             discoModeLabel.isHidden = false
         } else {
@@ -32,7 +32,7 @@ class LoginVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func loginAction(_ sender: Any) {
-        KefBytesSession.discoMode = discoModeSwitch.isOn
+        Session.discoMode = discoModeSwitch.isOn
     }
     
     /*

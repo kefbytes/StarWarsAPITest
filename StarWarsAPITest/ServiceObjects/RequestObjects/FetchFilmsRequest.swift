@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchFilmsRequest: KefBytesRequestProtocol {
+struct FetchFilmsRequest: RequestProtocol {
     
     var requestTypeMethod: HTTPMethod = .get
     var urlPath: String = "/films/"
@@ -16,6 +16,6 @@ struct FetchFilmsRequest: KefBytesRequestProtocol {
     var urlArguments: [URLQueryItem]? = nil
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil
-    var responseType: KefBytesResponseProtocol.Type = FetchFilmsResponse.self
+    var responseType: ResponseProtocol.Type = FetchFilmsResponse.self
 
 }

@@ -15,13 +15,13 @@ class PlanetsListVM {
     var request = FetchPlanetsRequest()
     var request2 = FetchPlanetsRequest()
     var request3 = FetchPlanetsRequest()
-    var requests = [KefBytesRequestProtocol]()
+    var requests = [RequestProtocol]()
     let serverConfig = ServerConfig()
-    let serverConnection: KefBytesServerConnection?
+    let serverConnection: ServerConnection?
     
     // MARK: - Initializers
     init() {
-        serverConnection = KefBytesServerConnection(config: serverConfig)
+        serverConnection = ServerConnection(config: serverConfig)
         request2.urlPath = "/planets/?page=2"
         request3.urlPath = "/planets/?page=3"
         requests.append(request)

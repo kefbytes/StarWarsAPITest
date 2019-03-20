@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FetchCharactersRequest: KefBytesRequestProtocol {
+struct FetchCharactersRequest: RequestProtocol {
     
     var requestTypeMethod: HTTPMethod = .get
     var urlPath: String = "/people/"
@@ -16,6 +16,6 @@ struct FetchCharactersRequest: KefBytesRequestProtocol {
     var urlArguments: [URLQueryItem]? = nil
     var headerItems: [String : String]? = nil
     var requestBody: Data? =  nil
-    var responseType: KefBytesResponseProtocol.Type = FetchCharactersResponse.self
+    var responseType: ResponseProtocol.Type = FetchCharactersResponse.self
 
 }

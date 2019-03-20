@@ -1,6 +1,6 @@
 //
-//  KefBytesServerConfig.swift
-//  StarWarsAPITest
+//  ServerConfig.swift
+//  
 //
 //  Created by Kent Franks on 2/12/19.
 //  Copyright © 2019 Kent Franks. All rights reserved.
@@ -19,8 +19,8 @@ struct ServerConfig: ServerConfigProtocol {
     var discoMode: Bool =  false
 
     init() {
-        discoMode = KefBytesSession.discoMode
-        switch KefBytesSession.environment {
+        discoMode = Session.discoMode
+        switch Session.environment {
         case .dev:
             hostBase = "https://swapi.co/api"
         case .qa:
