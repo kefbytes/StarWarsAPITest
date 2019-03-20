@@ -10,7 +10,7 @@ import Foundation
 
 struct KefBytesURLHelper {
     
-    static func buildURL(with config: KefBytesServerConfig, request: KefBytesRequestProtocol) -> URL? {
+    static func buildURL(with config: ServerConfigProtocol, request: KefBytesRequestProtocol) -> URL? {
         let baseUrl: String = config.hostBase
         let endpoint: String = request.urlPath
         var args: String = ""

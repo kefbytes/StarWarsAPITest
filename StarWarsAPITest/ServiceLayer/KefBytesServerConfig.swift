@@ -8,20 +8,24 @@
 
 import Foundation
 
-protocol KefBytesServerConfig {
+protocol ServerConfigProtocol {
     var hostBase: String { get }
     var discoMode: Bool { get }
 }
 
-struct ServerConfig: KefBytesServerConfig {
+struct ServerConfig: ServerConfigProtocol {
     
     var hostBase: String = "https://swapi.co/api"
     var discoMode: Bool =  false
 
     init() {
-        discoMode = Session.discoMode
-        switch Session.environment {
+        discoMode = KefBytesSession.discoMode
+        switch KefBytesSession.environment {
         case .dev:
+            hostBase = "https://swapi.co/api"
+        case .qa:
+            hostBase = "https://swapi.co/api"
+        case .uat:
             hostBase = "https://swapi.co/api"
         case .prod:
             hostBase = "https://swapi.co/api"

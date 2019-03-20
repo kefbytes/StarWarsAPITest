@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if Dev
-            Session.environment = .dev
+            KefBytesSession.environment = .dev
         #elseif Prod
-            Session.environment = .prod 
+            KefBytesSession.environment = .prod 
         #endif
         return true
     }

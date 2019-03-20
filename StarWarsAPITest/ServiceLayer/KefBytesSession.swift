@@ -1,5 +1,5 @@
 //
-//  Session.swift
+//  KefBytesSession.swift
 //  StarWarsAPITest
 //
 //  Created by Kent Franks on 2/19/19.
@@ -10,10 +10,12 @@ import Foundation
 
 enum Environment: String {
     case dev = "Dev"
+    case qa = "QA"
+    case uat = "UAT"
     case prod = "Prod"
 }
 
-struct Session {
+struct KefBytesSession {
     static var discoMode = false
     static var environment: Environment = .dev
 }

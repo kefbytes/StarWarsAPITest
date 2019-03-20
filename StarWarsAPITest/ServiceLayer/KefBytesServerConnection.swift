@@ -15,10 +15,10 @@ typealias executeGroupCompletionDifferentTypes = ([String : KefBytesResponseProt
 class KefBytesServerConnection {
     
     let defaultSession = URLSession(configuration: .default)
-    let serverConfig: KefBytesServerConfig
+    let serverConfig: ServerConfigProtocol
     var activeDataTasks: [String: URLSessionDataTask] = [:]
     
-    init(config: KefBytesServerConfig) {
+    init(config: ServerConfigProtocol) {
         self.serverConfig = config
     }
     
