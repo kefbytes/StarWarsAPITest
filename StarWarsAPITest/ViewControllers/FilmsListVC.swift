@@ -27,20 +27,20 @@ class FilmsListVC: UIViewController {
     
     // MARK: - Fetch
     func fetchFilms() {
-        spinner.startAnimating()
-        filmsListVM.fetchStarWarsFilms {
-            () in
-            for film in self.filmsListVM.starWarsFilmsArray {
-                guard let title = film.title else {
-                    continue
-                }
-                print(title)
-                DispatchQueue.main.async {
-                    self.spinner.stopAnimating()
-                    self.filmsTableView.reloadData()
-                }
-            }
-        }
+//        spinner.startAnimating()
+//        filmsListVM.fetchStarWarsFilms {
+//            () in
+//            for film in self.filmsListVM.starWarsFilmsArray {
+//                guard let title = film.title else {
+//                    continue
+//                }
+//                print(title)
+//                DispatchQueue.main.async {
+//                    self.spinner.stopAnimating()
+//                    self.filmsTableView.reloadData()
+//                }
+//            }
+//        }
     }
 
     /*

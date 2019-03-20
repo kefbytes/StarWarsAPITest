@@ -31,6 +31,8 @@
 		AE7CD36222136E9C006EF6AD /* FetchCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */; };
 		AE803649221C4AD000B4B70D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE803648221C4AD000B4B70D /* LoginVC.swift */; };
 		AE80364E221C75E700B4B70D /* FetchFilms.json in Resources */ = {isa = PBXBuildFile; fileRef = AE80364D221C75E700B4B70D /* FetchFilms.json */; };
+		AEBA97AD2242D2CD004A23A0 /* NetStak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA97AC2242D298004A23A0 /* NetStak.framework */; };
+		AEBA97AE2242D2CD004A23A0 /* NetStak.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA97AC2242D298004A23A0 /* NetStak.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,35 @@
 			remoteGlobalIDString = AE43B2CE2208E0C700165188;
 			remoteInfo = StarWarsAPITest;
 		};
+		AEBA97AB2242D298004A23A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEBA97A72242D298004A23A0 /* NetStak.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AEBA97882242CF35004A23A0;
+			remoteInfo = NetStak;
+		};
+		AEBA97AF2242D2CD004A23A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEBA97A72242D298004A23A0 /* NetStak.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AEBA97872242CF35004A23A0;
+			remoteInfo = NetStak;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEBA97B12242D2CD004A23A0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AEBA97AE2242D2CD004A23A0 /* NetStak.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AE0FD9D0221729C900D084AC /* FilmsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListVC.swift; sourceTree = "<group>"; };
@@ -72,6 +102,7 @@
 		AE7CD36122136E9C006EF6AD /* FetchCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersResponse.swift; sourceTree = "<group>"; };
 		AE803648221C4AD000B4B70D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AE80364D221C75E700B4B70D /* FetchFilms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FetchFilms.json; sourceTree = "<group>"; };
+		AEBA97A72242D298004A23A0 /* NetStak.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NetStak.xcodeproj; path = ../NetStak/NetStak.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEBA97AD2242D2CD004A23A0 /* NetStak.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +127,7 @@
 		AE43B2C62208E0C700165188 = {
 			isa = PBXGroup;
 			children = (
+				AEBA97A72242D298004A23A0 /* NetStak.xcodeproj */,
 				AE43B2D12208E0C700165188 /* StarWarsAPITest */,
 				AE43B2E62208E0C800165188 /* StarWarsAPITestTests */,
 				AE43B2D02208E0C700165188 /* Products */,
@@ -213,6 +246,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		AEBA97A82242D298004A23A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA97AC2242D298004A23A0 /* NetStak.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AEBE7A04221491CF0078AD90 /* ServiceObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,10 +273,12 @@
 				AE43B2CB2208E0C700165188 /* Sources */,
 				AE43B2CC2208E0C700165188 /* Frameworks */,
 				AE43B2CD2208E0C700165188 /* Resources */,
+				AEBA97B12242D2CD004A23A0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AEBA97B02242D2CD004A23A0 /* PBXTargetDependency */,
 			);
 			name = StarWarsAPITest;
 			productName = StarWarsAPITest;
@@ -290,6 +333,12 @@
 			mainGroup = AE43B2C62208E0C700165188;
 			productRefGroup = AE43B2D02208E0C700165188 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AEBA97A82242D298004A23A0 /* Products */;
+					ProjectRef = AEBA97A72242D298004A23A0 /* NetStak.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AE43B2CE2208E0C700165188 /* StarWarsAPITest */,
@@ -297,6 +346,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AEBA97AC2242D298004A23A0 /* NetStak.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NetStak.framework;
+			remoteRef = AEBA97AB2242D298004A23A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AE43B2CD2208E0C700165188 /* Resources */ = {
@@ -361,6 +420,11 @@
 			isa = PBXTargetDependency;
 			target = AE43B2CE2208E0C700165188 /* StarWarsAPITest */;
 			targetProxy = AE43B2E42208E0C800165188 /* PBXContainerItemProxy */;
+		};
+		AEBA97B02242D2CD004A23A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NetStak;
+			targetProxy = AEBA97AF2242D2CD004A23A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -505,6 +569,7 @@
 		AE43B2ED2208E0C800165188 /* Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -525,6 +590,7 @@
 		AE43B2EE2208E0C800165188 /* Prod */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

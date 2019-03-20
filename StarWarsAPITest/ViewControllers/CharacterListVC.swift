@@ -27,20 +27,20 @@ class CharacterListVC: UIViewController {
     
     // MARK: - Fetch
     func fetchCharacters() {
-        spinner.startAnimating()
-        characterListVM.fetchStarWarsCharacters() {
-            () in
-            for character in self.characterListVM.starWarsCharacterArray {
-                guard let name = character.name else {
-                    continue
-                }
-                print(name)
-                DispatchQueue.main.async {
-                    self.spinner.stopAnimating()
-                    self.charactersTableView.reloadData()
-                }
-            }
-        }
+//        spinner.startAnimating()
+//        characterListVM.fetchStarWarsCharacters() {
+//            () in
+//            for character in self.characterListVM.starWarsCharacterArray {
+//                guard let name = character.name else {
+//                    continue
+//                }
+//                print(name)
+//                DispatchQueue.main.async {
+//                    self.spinner.stopAnimating()
+//                    self.charactersTableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     /*

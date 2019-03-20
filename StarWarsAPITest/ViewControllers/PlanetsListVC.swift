@@ -26,20 +26,20 @@ class PlanetsListVC: UIViewController {
     
     // MARK: - Fetch
     func fetchPlanets() {
-        spinner.startAnimating()
-        planetsListVM.fetchStarWarsPlanets {
-            () in
-            for planet in self.planetsListVM.starWarsPlanetsArray {
-                guard let name = planet.name else {
-                    continue
-                }
-                print(name)
-                DispatchQueue.main.async {
-                    self.spinner.stopAnimating()
-                    self.planetsTableView.reloadData()
-                }
-            }
-        }
+//        spinner.startAnimating()
+//        planetsListVM.fetchStarWarsPlanets {
+//            () in
+//            for planet in self.planetsListVM.starWarsPlanetsArray {
+//                guard let name = planet.name else {
+//                    continue
+//                }
+//                print(name)
+//                DispatchQueue.main.async {
+//                    self.spinner.stopAnimating()
+//                    self.planetsTableView.reloadData()
+//                }
+//            }
+//        }
     }
 
     /*
