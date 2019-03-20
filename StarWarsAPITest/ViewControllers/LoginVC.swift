@@ -21,18 +21,18 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Session.environment == .dev {
-            discoModeSwitch.isHidden = false
-            discoModeLabel.isHidden = false
-        } else {
-            discoModeSwitch.isHidden = true
-            discoModeLabel.isHidden = true
-        }
+//        if Session.environment == .dev {
+//            discoModeSwitch.isHidden = false
+//            discoModeLabel.isHidden = false
+//        } else {
+//            discoModeSwitch.isHidden = true
+//            discoModeLabel.isHidden = true
+//        }
     }
     
     // MARK: - Actions
     @IBAction func loginAction(_ sender: Any) {
-        Session.discoMode = discoModeSwitch.isOn
+//        Session.discoMode = discoModeSwitch.isOn
     }
     
     /*

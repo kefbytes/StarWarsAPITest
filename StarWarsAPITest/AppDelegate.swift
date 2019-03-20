@@ -15,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #if Dev
-            Session.environment = .dev
-        #elseif Prod
-            Session.environment = .prod 
-        #endif
+//        #if Dev
+//            Session.environment = .dev
+//        #elseif Prod
+//            Session.environment = .prod 
+//        #endif
         return true
     }
 

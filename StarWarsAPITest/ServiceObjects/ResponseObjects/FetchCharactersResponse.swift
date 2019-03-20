@@ -8,24 +8,24 @@
 
 import Foundation
 
-struct FetchCharactersResponse: ResponseProtocol {
-    
-    var urlResponse: URLResponse?
-    let characters: [StarWarsCharacter]
-    
-    init(data: Data?, urlResponse: URLResponse?) throws {
-        if let jsonData = data {
-            let response = try JSONDecoder().decode(StarWarsCharactersFetchResponse.self, from: jsonData)
-            self.urlResponse = urlResponse
-            guard let characterArray = response.results else {
-                self.characters = [StarWarsCharacter]()
-                return
-            }
-            self.characters = characterArray
-        } else {
-            self.urlResponse = URLResponse()
-            self.characters = [StarWarsCharacter]()
-        }
-    }
-    
-}
+//struct FetchCharactersResponse: ResponseProtocol {
+//    
+//    var urlResponse: URLResponse?
+//    let characters: [StarWarsCharacter]
+//    
+//    init(data: Data?, urlResponse: URLResponse?) throws {
+//        if let jsonData = data {
+//            let response = try JSONDecoder().decode(StarWarsCharactersFetchResponse.self, from: jsonData)
+//            self.urlResponse = urlResponse
+//            guard let characterArray = response.results else {
+//                self.characters = [StarWarsCharacter]()
+//                return
+//            }
+//            self.characters = characterArray
+//        } else {
+//            self.urlResponse = URLResponse()
+//            self.characters = [StarWarsCharacter]()
+//        }
+//    }
+//    
+//}

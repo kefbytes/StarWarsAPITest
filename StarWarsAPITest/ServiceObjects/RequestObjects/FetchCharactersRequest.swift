@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct FetchCharactersRequest: RequestProtocol {
-    
-    var requestTypeMethod: HTTPMethod = .get
-    var urlPath: String = "/people/"
-    var mockFileName: String = "FetchCharacters"
-    var urlArguments: [URLQueryItem]? = nil
-    var headerItems: [String : String]? = nil
-    var requestBody: Data? =  nil
-    var responseType: ResponseProtocol.Type = FetchCharactersResponse.self
-
-}
+//struct FetchCharactersRequest: RequestProtocol {
+//    
+//    var requestTypeMethod: HTTPMethod = .get
+//    var urlPath: String = "/people/"
+//    var mockFileName: String = "FetchCharacters"
+//    var urlArguments: [URLQueryItem]? = nil
+//    var headerItems: [String : String]? = nil
+//    var requestBody: Data? =  nil
+//    var responseType: ResponseProtocol.Type = FetchCharactersResponse.self
+//
+//}
