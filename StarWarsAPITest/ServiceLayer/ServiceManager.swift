@@ -12,7 +12,7 @@ struct ServiceManager {
     
     func fetchStarWarsCharactersFromAPI(completion: @escaping (([StarWarsCharacter]) -> Void)) {
         
-        let urlString = "https://swapi.co/api/people/"
+        let urlString = "https://swapi.dev/api/people/"
         guard let url = URL(string: urlString) else {
             return
         }
@@ -28,10 +28,11 @@ struct ServiceManager {
                 }
                 completion(characterArray)
             } catch {
-                
+                print(error)
             }
         } .resume()
         
     }
     
 }
+

@@ -22,6 +22,7 @@ struct StarWarsCharacter: Decodable {
     let films: [String]?
     let species: [String]?
     let vehicles: [String]?
+    let starships: [String]?
     let created: String?
     let edited: String?
     let url: String?
