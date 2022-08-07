@@ -62,6 +62,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28F6517328A03C0B0041CA85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AE43B2F42208E10600165188 /* ServiceManager.swift */,
+				AE43B2F62208E12A00165188 /* StarWarsCharacter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		28F6517428A03C220041CA85 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				28F6517528A03C370041CA85 /* CharacterList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		28F6517528A03C370041CA85 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				AE43B2F82208E2BE00165188 /* CharacterListVC.swift */,
+				AE43B2FA2208E44400165188 /* CharacterListVM.swift */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
 		AE43B2C62208E0C700165188 = {
 			isa = PBXGroup;
 			children = (
@@ -84,10 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				AE43B2D22208E0C700165188 /* AppDelegate.swift */,
-				AE43B2FC2208E49000165188 /* ViewControllers */,
-				AE43B2FD2208E4A500165188 /* ViewModels */,
-				AE43B2FF2208E4C400165188 /* Model */,
-				AE43B2FE2208E4B900165188 /* ServiceLayer */,
+				28F6517428A03C220041CA85 /* Scenes */,
+				28F6517328A03C0B0041CA85 /* Network */,
 				AE43B2D62208E0C700165188 /* Main.storyboard */,
 				AE43B2D92208E0C800165188 /* Assets.xcassets */,
 				AE43B2DB2208E0C800165188 /* LaunchScreen.storyboard */,
@@ -103,38 +127,6 @@
 				AE43B2E92208E0C800165188 /* Info.plist */,
 			);
 			path = StarWarsAPITestTests;
-			sourceTree = "<group>";
-		};
-		AE43B2FC2208E49000165188 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				AE43B2F82208E2BE00165188 /* CharacterListVC.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		AE43B2FD2208E4A500165188 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AE43B2FA2208E44400165188 /* CharacterListVM.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		AE43B2FE2208E4B900165188 /* ServiceLayer */ = {
-			isa = PBXGroup;
-			children = (
-				AE43B2F42208E10600165188 /* ServiceManager.swift */,
-			);
-			path = ServiceLayer;
-			sourceTree = "<group>";
-		};
-		AE43B2FF2208E4C400165188 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AE43B2F62208E12A00165188 /* StarWarsCharacter.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
